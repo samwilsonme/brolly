@@ -1,15 +1,15 @@
-import { useState } from 'react'
-import './App.css'
-import CurrentWeather from './components/CurrentWeather'
-import ExpectedWeather from './components/ExpectedWeather'
+import {  Routes, Route } from 'react-router-dom';
+import './App.css';
+import { LandingSearch } from './pages/LandingSearch';
+import { WeatherDisplay } from './pages/WeatherDisplay';
 
 function App() {
 
   return (
-    <>
-      <CurrentWeather />
-      <ExpectedWeather />
-    </>
+    <Routes>
+      <Route path="/" element={<LandingSearch />} />
+      <Route path="/weather" element={<WeatherDisplay />} />
+    </Routes>
   )
 }
 
