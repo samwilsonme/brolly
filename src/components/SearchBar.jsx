@@ -5,8 +5,10 @@ import searchicon from "../assets/icons/searchicon.svg";
 function SearchBar() {
   const navigate = useNavigate();
   const handleSearch = () => {
-    //for now, no matter what you type, the search bar will take you to the weather display page just for test purposes. We will update this function later once you have your open weather api
-    navigate("/weather");
+    //this function has now been changed to actually handle location search!
+    if (searchTerm.trim()) {
+      navigate(`/weather?location=${encodeURIComponent(searchTerm.trim())}`);
+    };
   };
 
   const handleKeyDown = (e) => {
