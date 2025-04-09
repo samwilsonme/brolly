@@ -3,7 +3,7 @@ function Weather(props) {
   // props.condition = condition
   // props.temperature = temperature
   return (
-    <div className="weather" key={props.key}>
+    <div className="weather">
       {props.time && <h3>{props.time}</h3>}
       <img src={props.condition} alt={props.condition} />
       <p>{props.temperature}</p>
