@@ -11,7 +11,6 @@ export function useWeather(location = "Cambridge,UK") {
 
   useEffect(() => {
     const fetchWeather = async () => {
-
       setLoading(true);
       setError(null);
       try {
