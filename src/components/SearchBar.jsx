@@ -1,15 +1,32 @@
 import "./SearchBar.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useLocation } from "../hooks/useLocation";
 import searchicon from "../assets/icons/searchicon.svg";
 
 //static list of cities for suggestions (we can update this to the open weather geocode later)
-const cities = ["London", "Leeds", "Liverpool", "Manchester", "Birmingham", "Bristol"];
+//const cities = ["London", "Leeds", "Liverpool", "Manchester", "Birmingham", "Bristol"];
 
 function SearchBar() {
   const [searchTerm, setSearchTerm] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const navigate = useNavigate();
+  const { location, loading, error } = useLocation(searchTerm);
+
+  useEffect(() => {
+    if (location && location.length > 0 && searchTerm.trim().length >= 3) {
+      const filtered = location
+        .map((loc) => `${loc.name}${loc.country ? `, ${loc.country}` : ''}`) // Include country if available
+        .filter((suggestion) =>
+          suggestion.toLowerCase().startsWith(searchTerm.toLowerCase())
+        )
+        .slice(0, 3);
+      setSuggestions(filtered);
+    } else {
+      setSuggestions([]);
+    }
+  }, [location, searchTerm]);
+
 
   const handleSearch = () => {
     //this function has now been changed to actually handle location search!
@@ -27,14 +44,14 @@ function SearchBar() {
   const handleChange = (e) => {
     const value = e.target.value;
     setSearchTerm(value);
-
-    if (value.length > 0) {
+    // The suggestion filtering is now done in the useEffect hook
+    /*if (value.length > 0) {
       const filtered = cities.filter((city) => 
         city.toLowerCase().startsWith(value.toLowerCase())).slice(0, 3); //limit suggestions to 3
         setSuggestions(filtered);
     } else {
       setSuggestions([]);
-    }
+    }*/
   }
 
   const handleSuggestionClick = (city) => {
@@ -67,6 +84,8 @@ function SearchBar() {
             ))}
           </ul>
         )}
+        {loading && <p className="loading">...</p>}
+        {error && <p className="error">.....</p>}
       </div>
     </div>
   );
