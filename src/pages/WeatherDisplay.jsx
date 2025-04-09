@@ -1,5 +1,6 @@
 import { useSearchParams } from "react-router-dom";
 import { useWeather } from "../hooks/useWeather";
+import BrollyWeather from "../components/BrollyWeather";
 import CurrentWeather from "../components/CurrentWeather";
 import ExpectedWeather from "../components/ExpectedWeather";
 
@@ -15,6 +16,7 @@ export function WeatherDisplay() {
 
   return (
     <>
+      <BrollyWeather data={current}/>
       <CurrentWeather data={current}/>
       <ExpectedWeather data={forecast}/>
     </>
