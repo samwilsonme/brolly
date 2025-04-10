@@ -14,15 +14,37 @@ function ExpectedWeather({ data }) {
     return date.toLocaleTimeString("en-GB", options)
   };
 
+  const nextBrolly = () => {
+    for (const item of forecast.list) {
+      const weatherCode = item.weather[0].id;
+      const time = formatTime(item.dt_txt);
+  
+      if (weatherCode >= 200 && weatherCode < 300) {
+        return `Thunderstorm expected around ${time} - Brolly time!`;
+      }
+      if (weatherCode >= 300 && weatherCode < 400) {
+        return `Drizzle expected around ${time} - Brolly time!`;
+      }
+      if (weatherCode >= 500 && weatherCode < 600) {
+        return `Rain expected around ${time} - Brolly time!`;
+      }
+      if (weatherCode >= 600 && weatherCode < 900) {
+        return `Snow expected around ${time} - Brolly time!`;
+      }
+    }
+  
+    return "No wet weather expected soon. Enjoy!";
+  };
+
   if(loading) return <div>Loading...</div>
   if(error) return <div>Error: {error}</div>
-  if(!forecast?.list || forecast.list.length < 6) return <div>No forecast data available</div>
+  if(!forecast?.list || forecast.list.length < 5) return <div>No forecast data available</div>
 
   return (
     <div className="expected-weather">
-      <h2>Expected</h2>
+      <h3>{nextBrolly()}</h3>
       <ErrorBoundary>
-      {forecast.list.slice(1, 6).map((item, index) => (
+      {forecast.list.slice(0, 5).map((item, index) => (
         <Weather
           key={index}
           time={formatTime(item.dt_txt)}
