@@ -15,10 +15,10 @@ export function WeatherDisplay() {
   if (!current || !forecast ) return <div>No data available</div>;
 
   return (
-    <>
-      <BrollyWeather data={current}/>
-      <CurrentWeather data={current}/>
-      <ExpectedWeather data={forecast}/>
-    </>
+    <div className='weather-container'>
+      <div><BrollyWeather data={current}/></div>
+      <div><CurrentWeather data={current}/></div>
+      <div><ExpectedWeather data={forecast}/></div>
+    </div>
   );
 }

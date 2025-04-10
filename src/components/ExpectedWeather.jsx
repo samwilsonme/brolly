@@ -26,8 +26,9 @@ function ExpectedWeather({ data }) {
         <Weather
           key={index}
           time={formatTime(item.dt_txt)}
-          condition={item.main.temp}
-          temperature={item.weather[0].main}
+          condition={item.weather[0].main}
+          temperature={item.main.temp}
+
         />
       ))}
       </ErrorBoundary>
