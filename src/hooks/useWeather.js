@@ -18,7 +18,7 @@ export function useWeather(location = "Cambridge,UK") {
           `${apiBase}/weather?q=${location}&units=metric&appid=${apiKey}`
         );
         const forecastRes = await fetch(
-          `${apiBase}/forecast?q=${location}&units=metric&appid=${apiKey}`
+          `${apiBase}/forecast?q=${location}&units=metric&cnt=6&appid=${apiKey}` // added cnt=5 to limit results
         );
 
         if (!currentRes.ok || !forecastRes.ok) {
