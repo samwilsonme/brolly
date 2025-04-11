@@ -29,7 +29,13 @@ export function useLocation(search, delay = 300) {
           setError("No matching locations found.");
           setLocation(null);
         } else {
-          setLocation(locationData);
+          // Filter the results to only include UK locations
+          const ukLocations = locationData.filter(loc => loc.country === "GB");
+          setLocation(ukLocations);
+
+          if (ukLocations.length === 0 && locationData.length > 0) {
+            setError("No matching UK locations found.");
+          }
         }
       } catch (err) {
         setError(err.message);
@@ -57,8 +63,3 @@ export function useLocation(search, delay = 300) {
 }
 // This hook is responsible for fetching location data based on the search term
 // It uses the OpenWeatherMap API to get location suggestions
-
-// I don't like that there is no fuzzy search possible with this API
-// I also don't like how this API returns London,GB it should be London,UK
-// I think you can search by London,Uk so maybe it's something we can change
-// But beacuse of the fuzzy search I think I might look as using a different API

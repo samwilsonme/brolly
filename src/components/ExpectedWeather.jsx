@@ -18,7 +18,7 @@ function ExpectedWeather({ data }) {
     for (const item of forecast.list) {
       const weatherCode = item.weather[0].id;
       const time = formatTime(item.dt_txt);
-  
+
       if (weatherCode >= 200 && weatherCode < 300) {
         return `Thunderstorm expected around ${time} - Brolly time!`;
       }
@@ -28,7 +28,7 @@ function ExpectedWeather({ data }) {
       if (weatherCode >= 500 && weatherCode < 600) {
         return `Rain expected around ${time} - Brolly time!`;
       }
-      if (weatherCode >= 600 && weatherCode < 900) {
+      if (weatherCode >= 600 && weatherCode < 700) {
         return `Snow expected around ${time} - Brolly time!`;
       }
     }
