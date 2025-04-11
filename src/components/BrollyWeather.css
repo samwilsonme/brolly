@@ -1,7 +1,22 @@
 .brolly-weather {
   background-color: #f7f7f7;
-  padding: 20px;
-  margin: 20px;
-  border-radius: 30px;
+  padding: 30px 20px;
+  border-radius: 30px 0 0 30px;
   text-align: center;
+  min-width: 300px;
+  max-width: 340px;
+  height: 200px;
+}
+
+.brolly-weather h2 {
+  font-size: 32px;
+  font-weight: normal;
+}
+
+.brolly-weather h1 {
+  font-size: 40px;
+}
+
+.brolly-weather p {
+  font-size: 18px;
 }

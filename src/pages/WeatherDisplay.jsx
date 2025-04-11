@@ -3,6 +3,7 @@ import { useWeather } from "../hooks/useWeather";
 import BrollyWeather from "../components/BrollyWeather";
 import CurrentWeather from "../components/CurrentWeather";
 import ExpectedWeather from "../components/ExpectedWeather";
+import './WeatherDisplay.css';
 
 export function WeatherDisplay() {
   const [params] = useSearchParams();
@@ -15,10 +16,17 @@ export function WeatherDisplay() {
   if (!current || !forecast ) return <div>No data available</div>;
 
   return (
-    <div className='weather-container'>
-      <div><BrollyWeather data={current}/></div>
-      <div><CurrentWeather data={current}/></div>
-      <div><ExpectedWeather data={forecast}/></div>
+    <div className="weather-display">
+      <div className="logo">
+        <h1>BROLLY LOGO</h1>
+      </div>
+      <div className='weather-container'>
+        <BrollyWeather data={current}/>
+        <div className="current-expected">
+          <CurrentWeather data={current}/>
+          <ExpectedWeather data={forecast}/>
+        </div>
+      </div>
     </div>
   );
 }
