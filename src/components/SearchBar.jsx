@@ -16,7 +16,9 @@ function SearchBar() {
   useEffect(() => {
     if (location && location.length > 0 && searchTerm.trim().length >= 3) {
       const filtered = location
-        .map((loc) => `${loc.name}${loc.country ? `, ${loc.country}` : ''}`) // Include country if available
+        //.map((loc) => `${loc.name}${loc.country ? `, ${loc.country}` : ''}`) // Include country if available
+        //.map((loc) => `${loc.name}${loc.state ? `, ${loc.state}` : ''}`) // Include state if available
+        .map((loc) => loc.name) // Only include the city name
         .filter((suggestion) =>
           suggestion.toLowerCase().startsWith(searchTerm.toLowerCase())
         )
