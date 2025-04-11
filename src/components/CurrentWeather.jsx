@@ -13,7 +13,7 @@ function CurrentWeather({ data }){
         <h2>Currently</h2>
         <div className="details">
           <Weather
-            condition={""} //can't delete because I an error on the component, but this element doesn't show on the designs 
+            condition={data.weather[0].main} 
             temperature={data.main.temp}
           />
         </div>

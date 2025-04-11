@@ -7,13 +7,13 @@ function ExpectedWeather({ data }) {
   const { forecast, loading, error } = useWeather(); //using the shared hook 
 
   // Format the time string to display only hours and minutes
-  // A: formatted time looks great
   const formatTime = (timeString) => {
     const date = new Date(timeString)
     const options = { hour: '2-digit', minute: '2-digit' }
     return date.toLocaleTimeString("en-GB", options)
   };
 
+  // Check the forecast for wet weather and return message
   const nextBrolly = () => {
     for (const item of forecast.list) {
       const weatherCode = item.weather[0].id;
@@ -48,7 +48,7 @@ function ExpectedWeather({ data }) {
         <Weather
           key={index}
           time={formatTime(item.dt_txt)}
-          condition={""}
+          condition={item.weather[0].main}
           temperature={item.main.temp}
 
         />
