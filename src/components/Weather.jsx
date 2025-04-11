@@ -8,8 +8,8 @@ function Weather({time, condition, temperature}) {
   return (
     <div className="weather">
       {time && <h3>{time}</h3>}
-      <img src={icon} alt={condition} /> <br />
-      <p>{condition}</p> <br />
+      <img src={icon} alt={condition} />
+      <p>{condition}</p>
       <p>{Math.round(temperature)}°C</p>
     </div>
   );

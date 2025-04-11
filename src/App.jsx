@@ -6,10 +6,12 @@ import { WeatherDisplay } from './pages/WeatherDisplay';
 function App() {
 
   return (
-    <Routes>
-      <Route path="/" element={<LandingSearch />} />
-      <Route path="/weather" element={<WeatherDisplay />} />
-    </Routes>
+    <div className="app-container">
+      <Routes>
+        <Route path="/" element={<LandingSearch />} />
+        <Route path="/weather" element={<WeatherDisplay />} />
+      </Routes>
+    </div>
   )
 }
 

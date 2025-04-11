@@ -11,8 +11,8 @@ function BrollyWeather({ data }){
     <div className="brolly-weather">
       <h2>{data.name}</h2>
       <ErrorBoundary>
+        <h1>YES/NO</h1>
         <p>{data.weather[0].description}</p>
-        <p>brolly stuff</p>
       </ErrorBoundary>
     </div>
   );
