@@ -50,7 +50,7 @@ function ExpectedWeather({ data }) {
           time={formatTime(item.dt_txt)}
           condition={item.weather[0].main}
           temperature={item.main.temp}
-
+          pod={item.sys.pod} // part of day, 'd' for day and 'n' for night
         />
       ))}
       </ErrorBoundary>

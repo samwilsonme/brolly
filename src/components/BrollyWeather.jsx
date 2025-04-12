@@ -9,9 +9,9 @@ function BrollyWeather({ data }){
 
   return (
     <div className="brolly-weather">
-      <h2>{data.name}</h2>
+      <h2>Will you need a brolly in {data.name}?</h2>
       <ErrorBoundary>
-        <h1>{getBrollyAdvice(data)}</h1>
+        <h3>{getBrollyAdvice(data)}</h3>
         <p>{getBrollyMessage(data)}</p>
       </ErrorBoundary>
     </div>
