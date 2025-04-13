@@ -3,11 +3,12 @@ import { useState, useEffect } from "react";
 const apiKey = import.meta.env.VITE_WEATHER_API_KEY;
 const apiBase = "https://api.openweathermap.org/data/2.5";
 
-export function useWeather(location = "Cambridge,UK") {
+export function useWeather(selectedLocation) {
   const [current, setCurrent] = useState(null);
   const [forecast, setForecast] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const location = `${selectedLocation},GB` || "Cambridge,GB"; // Default to Cambridge,GB if no location is provided
 
   useEffect(() => {
     const fetchWeather = async () => {
@@ -20,7 +21,7 @@ export function useWeather(location = "Cambridge,UK") {
         const forecastRes = await fetch(
           `${apiBase}/forecast?q=${location}&units=metric&cnt=5&appid=${apiKey}` // added cnt=5 to limit results
         );
-
+        
         if (!currentRes.ok || !forecastRes.ok) {
           throw new Error("Failed to fetch weather data");
         }
@@ -30,6 +31,11 @@ export function useWeather(location = "Cambridge,UK") {
 
         setCurrent(currentData);
         setForecast(forecastData);
+
+        //console.log("Current Weather Data:", currentData);
+        //console.log("Forecast Weather Data:", forecastData);
+        console.log("Location:", location);
+
       } catch (err) {
         setError(err.message);
       } finally {

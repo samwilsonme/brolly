@@ -1,17 +1,19 @@
 import "./BrollyWeather.css";
 import ErrorBoundary from "./ErrorBoundary"
 import { getBrollyMessage } from "../hooks/useBrolly"
+import { useWeather } from "../hooks/useWeather"
 
-function BrollyWeather({ data }){
-  if(!data || !data.weather) {
+function BrollyWeather({ data, location }) {
+  const { current, loading, error } = useWeather(location) //using the shared hook 
+  if(!current || !current.weather) {
     return <div>No weather data available</div>
   }
 
   const getBrolly = () => {
-    if (data.weather[0].id !== 800) {
+    if (current.weather[0].id !== 800) {
       return "Yes"
     }
-    if (data.weather[0].id > 800) {
+    if (current.weather[0].id > 800) {
       return "Maybe"
     }
     return "No"
@@ -21,11 +23,11 @@ function BrollyWeather({ data }){
     <div className="brolly-weather">
       <h2>
         <span className="brolly-question">Will you need a brolly in </span>
-        {data.name}?
+        {current.name}?
       </h2>
       <ErrorBoundary>
         <h3>{getBrolly()}</h3>
-        <p>{getBrollyMessage(data)}</p>
+        <p>{getBrollyMessage(current)}</p>
       </ErrorBoundary>
     </div>
   );

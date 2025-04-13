@@ -1,37 +1,20 @@
 import "./SearchBar.css";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useLocation } from "../hooks/useLocation";
 import icon from "../assets/icons/search.svg";
-
-//static list of cities for suggestions (we can update this to the open weather geocode later)
-//const cities = ["London", "Leeds", "Liverpool", "Manchester", "Birmingham", "Bristol"];
+import data from '../data/uk_locations.min.json'; // Import the local JSON file
 
 function SearchBar() {
   const [searchTerm, setSearchTerm] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const navigate = useNavigate();
-  const { location, loading, error } = useLocation(searchTerm);
+  const [cityData, setCityData] = useState([]); // State to hold the full city data from JSON
 
   useEffect(() => {
-    if (location && location.length > 0 && searchTerm.trim().length >= 3) {
-      const filtered = location
-        //.map((loc) => `${loc.name}${loc.country ? `, ${loc.country}` : ''}`) // Include country if available
-        //.map((loc) => `${loc.name}${loc.state ? `, ${loc.state}` : ''}`) // Include state if available
-        .map((loc) => loc.name) // Only include the city name
-        .filter((suggestion) =>
-          suggestion.toLowerCase().startsWith(searchTerm.toLowerCase())
-        )
-        .slice(0, 3);
-      setSuggestions(filtered);
-    } else {
-      setSuggestions([]);
-    }
-  }, [location, searchTerm]);
-
+    setCityData(data); // Load the entire JSON data into state
+  }, []);
 
   const handleSearch = () => {
-    //this function has now been changed to actually handle location search!
     if (searchTerm.trim()) {
       navigate(`/weather?location=${encodeURIComponent(searchTerm.trim())}`);
     };
@@ -46,28 +29,43 @@ function SearchBar() {
   const handleChange = (e) => {
     const value = e.target.value;
     setSearchTerm(value);
-    // The suggestion filtering is now done in the useEffect hook
-    /*if (value.length > 0) {
-      const filtered = cities.filter((city) => 
-        city.toLowerCase().startsWith(value.toLowerCase())).slice(0, 3); //limit suggestions to 3
-        setSuggestions(filtered);
+
+    if (value.length > 0 && cityData.length > 0) {
+      const filtered = cityData
+        .filter((city) => {
+          const searchableName = (city.name_2 && city.name_2.trim() !== "") ? city.name_2 : city.name_1;
+          return searchableName.toLowerCase().startsWith(value.toLowerCase());
+        })
+        .slice(0, 5); // Limit to 5 suggestions
+
+      setSuggestions(filtered);
     } else {
       setSuggestions([]);
-    }*/
+    }
   }
 
-  const handleSuggestionClick = (city) => {
-    setSearchTerm(city);
+  const handleSuggestionClick = (suggestion) => {
+    const selectedCityName = (suggestion.name_2 && suggestion.name_2.trim() !== "") ? suggestion.name_2 : suggestion.name_1;
+    setSearchTerm(selectedCityName);
     setSuggestions([]);
-    navigate(`/weather?location=${encodeURIComponent(city)}`);
+    navigate(`/weather?location=${encodeURIComponent(selectedCityName)}`);
   }
+
+  const extractPostcodeArea = (postcode) => {
+    if (!postcode) {
+      return "";
+    }
+    // Match the first part of the postcode (letters only)
+    const match = postcode.match(/^([A-Z]+)/);
+    return match ? match[1] : "";
+  };
 
   return (
     <div className="search-bar-container">
       <div className="search-area">
         <div className="search-bar">
           <div className="magnifying-glass" onClick={handleSearch}>
-            <img src={icon} />
+            <img src={icon} alt="Search" />
           </div>
           <input
             type="text"
@@ -79,19 +77,20 @@ function SearchBar() {
         </div>
         {suggestions.length > 0 && (
           <ul className="suggestions-list">
-            {suggestions.map((city, index) => (
-              <li key={index} onClick={() => handleSuggestionClick(city)}>
-                {city}
-              </li>
-            ))}
+            {suggestions.map((suggestion, index) => {
+              const displayName = (suggestion.name_2 && suggestion.name_2.trim() !== "") ? suggestion.name_2 : suggestion.name_1;
+              const postcodeArea = extractPostcodeArea(suggestion.postcode_district);
+              return (
+                <li key={index} onClick={() => handleSuggestionClick(suggestion)}>
+                  {displayName} ({postcodeArea})
+                </li>
+              );
+            })}
           </ul>
         )}
-        {loading && <p className="loading">...</p>}
-        {error && <p className="error">.....</p>}
       </div>
     </div>
   );
 }
 
 export default SearchBar;
-// This is a mock up of the location search bar

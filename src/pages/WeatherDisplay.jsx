@@ -21,10 +21,10 @@ export function WeatherDisplay() {
         <h1>BROLLY LOGO</h1>
       </div>
       <div className='weather-container'>
-        <BrollyWeather data={current}/>
+        <BrollyWeather data={current} location={location}/>
         <div className="current-expected">
-          <CurrentWeather data={current}/>
-          <ExpectedWeather data={forecast}/>
+          <CurrentWeather data={current} location={location}/>
+          <ExpectedWeather data={forecast} location={location}/>
         </div>
       </div>
     </div>
