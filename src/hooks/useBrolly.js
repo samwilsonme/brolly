@@ -1,53 +1,5 @@
-export function getBrollyAdvice(weatherData) {
-  const main = weatherData.weather[0].main;
-  const sunrise = weatherData.sys.sunrise;
-  const sunset = weatherData.sys.sunset;
-  const now = weatherData.dt;
-
-  const isDaytime = now > sunrise && now < sunset;
-
-  const daytimeMessages = {
-    Thunderstorm: ["Brolly essential, mind the lightning!", "Definitely a brolly day, stay dry!", "Don't leave without it, a proper downpour!", "Brolly: your best mate against this thunder."],
-    Drizzle: ["Might need a brolly for this persistent drizzle.", "Brolly could be handy for this fine spray.", "Consider a brolly, it's a bit damp out.", "Perhaps a brolly? Just a thought."],
-    Rain: ["Grab the brolly, it's coming down!", "Brolly needed today, no doubt about it.", "Definitely brolly weather, the heavens have opened!", "Brolly alert! Stay dry out there."],
-    Snow: ["Wrap up warm, it's a snowy one!", "Hat and gloves time, lovely snow!", "Keep snug, enjoy the winter wonderland!", "Layer up, it's a proper snow day!"],
-    Mist: ["A bit misty out, take it easy.", "Visibility's a bit low with this mist.", "Careful in the mist, drive safely.", "Eerie mist out there today."],
-    Smoke: ["Smoky conditions, best to stay indoors.", "Keep windows closed with this smoke.", "Air's a bit thick with smoke today.", "Mind the smoke, take care."],
-    Haze: ["Hazy today, a bit murky.", "Sun's a bit hazy today.", "Everything looks a bit hazy.", "That typical British haze."],
-    Dust: ["Dusty conditions, might be irritating.", "A bit of dust in the air today.", "Keep windows closed due to dust.", "Dusty out there, watch out."],
-    Sand: ["Sandy conditions, a bit unusual!", "Sand in the air, that's a surprise.", "Might want to cover up from the sand.", "Bit gritty with the sand today."],
-    Fog: ["Foggy out there, can barely see!", "Thick fog, take it very slow.", "Pea souper fog today!", "Can't see your hand in front of your face fog."],
-    Ash: ["Ash in the air, take precautions.", "Volcanic ash reported, stay safe.", "Mind the ash, follow local advice.", "Ashy conditions today."],
-    Squall: ["Squally conditions, sudden strong winds!", "Expect sudden gusts with these squalls.", "Hold onto your hats, squalls about!", "A bit blustery with the squalls."],
-    Tornado: ["Tornado warning! Seek shelter immediately!", "Take cover, a tornado has been reported!", "Serious weather, tornado alert!", "Danger! Tornado! Find safety now!"],
-    Clear: ["Sun's out, lovely day!", "Lovely and clear, enjoy it!", "Enjoy the sunshine, make the most of it!", "Shades might be good, it's bright!"],
-    Clouds: ["Could stay dry under these clouds...", "No brolly required... yet, keep an eye out.", "Keep an eye on it, clouds can change quickly.", "Looking good for now, fingers crossed!"],
-    Default: ["Weather's doing its thing... best to have a peek outside."]
-  };
-
-  const nighttimeMessages = {
-    Thunderstorm: ["Brolly essential, and mind the flashes!", "Definitely a brolly night, stay dry indoors!", "Don't venture out without it, a proper nighttime storm!", "Brolly: your best mate against this nocturnal thunder."],
-    Drizzle: ["Might need a brolly for this late-night drizzle.", "Brolly could be handy for this quiet dampness.", "Consider a brolly if you're out in this drizzle.", "Perhaps a brolly? Just a thought for the night."],
-    Rain: ["Grab the brolly, it's pouring down tonight!", "Brolly needed tonight, no doubt about it.", "Definitely brolly weather after dark!", "Brolly alert! Stay dry in the night."],
-    Snow: ["Wrap up warm, it's a snowy night!", "Hat and gloves time for this nighttime snow!", "Keep snug, enjoy the quiet snow!", "Layer up if you're out in this snow!"],
-    Mist: ["A bit misty tonight, take it easy if you're out.", "Visibility's a bit low in the night mist.", "Careful in the night mist, drive safely.", "Eerie mist about tonight."],
-    Smoke: ["Smoky conditions tonight, best to stay in.", "Keep windows closed with this night smoke.", "Air's a bit thick with smoke in the dark.", "Mind the smoke tonight, take care."],
-    Haze: ["Hazy tonight, a bit murky after dark.", "Moon's a bit hazy tonight.", "Everything looks a bit hazy in the dark.", "That typical British night haze."],
-    Dust: ["Dusty conditions tonight, might be irritating.", "A bit of dust in the night air.", "Keep windows closed due to night dust.", "Dusty out there tonight, watch out."],
-    Sand: ["Sandy conditions tonight, a bit unusual for night!", "Sand in the night air, that's a surprise.", "Might want to cover up from the night sand.", "Bit gritty with the sand tonight."],
-    Fog: ["Foggy tonight, can barely see a thing!", "Thick fog in the night, take it very slow.", "Pea souper fog tonight!", "Can't see your hand in front of your face in this fog."],
-    Ash: ["Ash in the night air, take precautions.", "Volcanic ash reported tonight, stay safe indoors.", "Mind the ash tonight, follow local advice.", "Ashy conditions tonight."],
-    Squall: ["Squally conditions tonight, sudden strong winds!", "Expect sudden gusts in the night squalls.", "Hold onto your hats if you're out, squalls about!", "A bit blustery with the night squalls."],
-    Tornado: ["Tornado warning! Seek shelter immediately tonight!", "Take cover, a tornado has been reported at night!", "Serious weather tonight, tornado alert!", "Danger! Night tornado! Find safety now!"],
-    Clear: ["Clear sky tonight, lovely for stargazing!", "Lovely and clear tonight, enjoy the stars!", "Enjoy the clear night sky!", "Nice clear night, perhaps a moonlit stroll?"],
-    Clouds: ["Might stay dry under these night clouds...", "No brolly required tonight... yet, keep an eye on the moon.", "Keep an eye on it, night clouds can bring surprises.", "Looking good for now, hopefully a dry night!"],
-    Default: ["Weather's doing its thing tonight... best to have a peek out the window."]
-  };
-
-  const adviceArray = isDaytime ? daytimeMessages[main] : nighttimeMessages[main];
-  return adviceArray ? adviceArray[Math.floor(Math.random() * adviceArray.length)] : (isDaytime ? daytimeMessages.Default : nighttimeMessages.Default);
-};
-
+// This function generates messages based on the weather data and time of day
+// Replace with calls to fetch messages from backend database in the future
 export function getBrollyMessage(weatherData) {
   const id = weatherData.weather[0].id;
   const sunrise = weatherData.sys.sunrise;
@@ -58,7 +10,7 @@ export function getBrollyMessage(weatherData) {
 
   const daytimeMessages = {
     // Thunderstorm
-    200: `A rumble and a bit of a sprinkle. A classic British summer 'surprise'.`,
+    200: `A rumble and a bit of a sprinkle. A classic British 'surprise'.`,
     201: `Bit more than a spit and spot now, a proper thunderstorm with rain.`,
     202: `Crikey, a heavy thunderstorm! Sounds like the heavens are really having a go.`,
     210: `Just a light rumble and a bit of a show.`,
@@ -149,7 +101,7 @@ export function getBrollyMessage(weatherData) {
       `One of those messy, intermittent showers. You might dodge it, you might not.`
     ],
 
-    // Snow and other conditions (no changes requested for these)
+    // Snow
     600: `Light snow falling. Looks a bit picturesque, doesn't it? Wrap up warm!`,
     601: `It's snowing! Proper snow now. Time for some winter fun (and maybe a shovel later).`,
     602: `Heavy snow! Looks like a proper whiteout out there. Take it easy if you're travelling.`,
@@ -161,16 +113,20 @@ export function getBrollyMessage(weatherData) {
     620: `Light shower snow. Just a little flurry, might not last.`,
     621: `Shower snow. A bit more persistent than a flurry.`,
     622: `Heavy shower snow. Could accumulate quickly!`,
+
+    // Other conditions
     701: `Mist in the air. Makes everything look a bit eerie. Drive carefully.`,
     711: `Smoky conditions reported. Keep those windows closed!`,
     721: `Hazy today. Makes the sunshine look a bit odd.`,
     731: `Dusty/sandy conditions. Might want to keep the windows shut and perhaps wear a mask if you're sensitive.`,
-    761: `Dusty/sandy conditions. Might want to keep the windows shut and perhaps wear a mask if you're sensitive.`,
     741: `Foggy as pea soup! Can barely see a thing. Take it very slow if you're out and about.`,
     751: `Sand in the air! A bit unusual for the UK. Might want to protect your eyes.`,
+    761: `Dusty/sandy conditions. Might want to keep the windows shut and perhaps wear a mask if you're sensitive.`,
     762: `Volcanic ash reported. Best to stay indoors and follow any local advice.`,
     771: `Squalls reported. Sounds a bit dramatic! Expect sudden increases in wind speed.`,
     781: `Tornado! Right, that's serious. Seek shelter immediately and follow safety guidelines!`,
+
+    // Clear and clouds
     800: [
       `Clear sky! Get out there and soak up that rare British sunshine.`,
       `Lovely clear skies. Makes a change, doesn't it?`
@@ -183,8 +139,14 @@ export function getBrollyMessage(weatherData) {
       `Scattered clouds. Could brighten up, could cloud over more. The suspense!`,
       `More clouds than blue sky, but nothing too ominous... yet.`
     ],
-    803: `Broken clouds. Looks a bit grey, doesn't it?`,
-    804: `Overcast clouds. Solid grey sky. Don't expect much sunshine today.`,
+    803: [
+      `Broken clouds. Looks a bit grey, doesn't it?`,
+      `Broken clouds. Looks like the sky's having a bit of a patchy moment.`
+    ],
+    804: [
+      `Overcast clouds. Solid grey sky. Don't expect much sunshine today.`,
+      `Overcast clouds. Looks like the sky's put its grumpy face on this morning.`
+    ],
     default: `The weather is doing its thing... whatever that is. Best to have a look outside!`
   };
 
@@ -281,7 +243,7 @@ export function getBrollyMessage(weatherData) {
       `One of those messy, intermittent showers in the night. You might wake up to puddles, you might not.`
     ],
 
-    // Snow and other conditions (no changes requested for these)
+    // Snow
     600: `Light snow falling at night. Looks a bit magical under the streetlights. Wrap up warm if you're out!`,
     601: `It's snowing at night! Proper snow now. Time for some quiet winter magic.`,
     602: `Heavy snow at night! Looks like a proper whiteout outside. Take it easy if you're travelling in the morning.`,
@@ -293,16 +255,20 @@ export function getBrollyMessage(weatherData) {
     620: `Light shower snow at night. Just a little flurry, might not last until morning.`,
     621: `Shower snow at night. A bit more persistent than a flurry.`,
     622: `Heavy shower snow at night. Could accumulate quickly while you're sleeping!`,
+
+    // Other conditions
     701: `Mist in the air tonight. Makes everything look a bit ghostly under the streetlights. Drive carefully if you're out.`,
     711: `Smoky conditions reported tonight. Keep those windows closed while you sleep!`,
     721: `Hazy tonight. Makes the moon look a bit odd.`,
     731: `Dusty/sandy conditions tonight. Might want to keep the windows shut overnight.`,
-    761: `Dusty/sandy conditions tonight. Might want to keep the windows shut overnight.`,
     741: `Foggy as pea soup tonight! Can barely see a thing. Take it very slow if you're out and about.`,
     751: `Sand in the air tonight! A bit unusual for the UK at night.`,
+    761: `Dusty/sandy conditions tonight. Might want to keep the windows shut overnight.`,
     762: `Volcanic ash reported tonight. Best to stay indoors and follow any local advice.`,
     771: `Squalls reported tonight. Sounds a bit dramatic! Expect sudden increases in wind speed.`,
     781: `Tornado! Right, that's serious. Seek shelter immediately and follow safety guidelines!`,
+
+    // Clear and clouds
     800: [
       `Clear sky tonight! Perfect for stargazing.`,
       `Lovely clear skies tonight. Makes a change, doesn't it?`
@@ -315,8 +281,14 @@ export function getBrollyMessage(weatherData) {
       `Scattered clouds tonight. Could stay clear, could cloud over more. The suspense!`,
       `More clouds than clear sky tonight, but nothing too ominous... yet.`
     ],
-    803: `Broken clouds tonight. Looks a bit grey, even in the dark, doesn't it?`,
-    804: `Overcast clouds tonight. Solid grey sky. Don't expect much moonlight.`,
+    803: [
+      `Broken clouds tonight. Looks a bit grey, even in the dark, doesn't it?`,
+      `Broken clouds tonight. Enough to make it feel a bit moody, but not a total blackout.`
+    ],
+    804: [
+      `Overcast clouds tonight. Solid grey sky. Don't expect much moonlight.`,
+      `Overcast clouds tonight. A solid blanket of grey up there. The moon's gone into hiding.`
+    ],
     default: `The weather is doing its thing tonight... whatever that is. Best to have a peek out the window before bed!`
   };
 
