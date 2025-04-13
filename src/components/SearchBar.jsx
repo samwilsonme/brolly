@@ -2,7 +2,7 @@ import "./SearchBar.css";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "../hooks/useLocation";
-import searchicon from "../assets/icons/searchicon.svg";
+import icon from "../assets/icons/search.svg";
 
 //static list of cities for suggestions (we can update this to the open weather geocode later)
 //const cities = ["London", "Leeds", "Liverpool", "Manchester", "Birmingham", "Bristol"];
@@ -67,7 +67,7 @@ function SearchBar() {
       <div className="search-area">
         <div className="search-bar">
           <div className="magnifying-glass" onClick={handleSearch}>
-            <img src={searchicon} />
+            <img src={icon} />
           </div>
           <input
             type="text"
