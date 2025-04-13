@@ -1,9 +1,11 @@
 import "./CurrentWeather.css"
 import ErrorBoundary from "./ErrorBoundary"
 import Weather from "./Weather"
+import { useWeather } from "../hooks/useWeather"
 
-function CurrentWeather({ data }){
-  if(!data || !data.weather) {
+function CurrentWeather({ data, location }) {
+  const { current, loading, error } = useWeather(location) //using the shared hook 
+  if(!current || !current.weather) {
     return <div>No weather data available</div>
   }
   
@@ -13,9 +15,9 @@ function CurrentWeather({ data }){
         <h2>Currently</h2>
         <div className="details">
           <Weather
-            condition={data.weather[0].main} 
-            temperature={data.main.temp}
-            icon={data.weather[0].icon}
+            condition={current.weather[0].main} 
+            temperature={current.main.temp}
+            icon={current.weather[0].icon}
           />
         </div>
       </div>

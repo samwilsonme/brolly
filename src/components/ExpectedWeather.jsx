@@ -3,8 +3,8 @@ import ErrorBoundary from "./ErrorBoundary"
 import Weather from "./Weather"
 import { useWeather } from "../hooks/useWeather"
 
-function ExpectedWeather({ data }) {
-  const { forecast, loading, error } = useWeather() //using the shared hook 
+function ExpectedWeather({ data, location }) {
+  const { forecast, loading, error } = useWeather(location) //using the shared hook 
 
   // Format the time string to display only hours and minutes
   const formatTime = (timeString) => {
