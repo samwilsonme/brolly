@@ -36,7 +36,7 @@ This repo was orginally created from a template to get [React](https://react.dev
 1. **Install Dependencies:**
 
     ```
-    npm install # or yarn install
+    npm install
     ```
 
 2. **Configure Your Environment:**
