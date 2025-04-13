@@ -1,10 +1,10 @@
-import "./ExpectedWeather.css";
+import "./ExpectedWeather.css"
 import ErrorBoundary from "./ErrorBoundary"
-import Weather from "./Weather";
-import { useWeather } from "../hooks/useWeather";
+import Weather from "./Weather"
+import { useWeather } from "../hooks/useWeather"
 
 function ExpectedWeather({ data }) {
-  const { forecast, loading, error } = useWeather(); //using the shared hook 
+  const { forecast, loading, error } = useWeather() //using the shared hook 
 
   // Format the time string to display only hours and minutes
   const formatTime = (timeString) => {
@@ -16,24 +16,18 @@ function ExpectedWeather({ data }) {
   // Check the forecast for wet weather and return message
   const nextBrolly = () => {
     for (const item of forecast.list) {
-      const weatherCode = item.weather[0].id;
-      const time = formatTime(item.dt_txt);
+      const weatherCode = item.weather[0].id
+      const time = formatTime(item.dt_txt)
 
-      if (weatherCode >= 200 && weatherCode < 300) {
-        return `Thunderstorm expected around ${time} - Brolly time!`;
+      if (weatherCode !== 800) {
+        return `Wet weather expected around ${time}. Brolly time!`
       }
-      if (weatherCode >= 300 && weatherCode < 400) {
-        return `Drizzle expected around ${time} - Brolly time!`;
-      }
-      if (weatherCode >= 500 && weatherCode < 600) {
-        return `Rain expected around ${time} - Brolly time!`;
-      }
-      if (weatherCode >= 600 && weatherCode < 700) {
-        return `Snow expected around ${time} - Brolly time!`;
+      if (weatherCode > 800) {
+        return `Might be wet later around ${time}. Look out!`
       }
     }
-  
-    return "No wet weather expected soon. Enjoy!";
+
+    return "Looking good up there! Enjoy!"
   };
 
   if(loading) return <div>Loading...</div>
@@ -58,5 +52,5 @@ function ExpectedWeather({ data }) {
   );
 }
 
-export default ExpectedWeather;
+export default ExpectedWeather
 // This component is responsible for displaying the expected weather information
