@@ -1,29 +1,26 @@
-import "./CurrentWeather.css"
-import ErrorBoundary from "./ErrorBoundary"
-import Weather from "./Weather"
-import { useWeather } from "../hooks/useWeather"
+import "./CurrentWeather.css";
+import Weather from "./Weather";
+import { useWeatherContext } from "../context/WeatherContext";
 
-function CurrentWeather({ data, location }) {
-  const { current, loading, error } = useWeather(location) //using the shared hook 
-  if(!current || !current.weather) {
-    return <div>No weather data available</div>
+function CurrentWeather() {
+  const { current } = useWeatherContext(); // Access data from WeatherContext
+
+  if (!current || !current.weather) {
+    return <div>No weather data available</div>;
   }
-  
+
   return (
-    <ErrorBoundary>
-      <div className="current-weather">
-        <h2>Currently</h2>
-        <div className="details">
-          <Weather
-            condition={current.weather[0].main} 
-            temperature={current.main.temp}
-            icon={current.weather[0].icon}
-          />
-        </div>
+    <div className="current-weather">
+      <h2>Currently</h2>
+      <div className="details">
+        <Weather
+          condition={current.weather[0].main}
+          temperature={current.main.temp}
+          icon={current.weather[0].icon}
+        />
       </div>
-    </ErrorBoundary>
+    </div>
   );
 }
 
-export default CurrentWeather
-// This component is responsible for displaying the current weather information
+export default CurrentWeather;
