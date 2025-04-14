@@ -1,22 +1,22 @@
 import "./BrollyWeather.css";
-import ErrorBoundary from "./ErrorBoundary"
 import { getBrollyMessage } from "../hooks/useBrolly"
-import { useWeather } from "../hooks/useWeather"
+import { useWeatherContext } from "../context/WeatherContext";
 
-function BrollyWeather({ data, location }) {
-  const { current, loading, error } = useWeather(location) //using the shared hook 
-  if(!current || !current.weather) {
-    return <div>No weather data available</div>
+function BrollyWeather() {
+  const { current } = useWeatherContext();
+
+  if (!current || !current.weather) {
+    return <div>No weather data available</div>;
   }
 
   const getBrolly = () => {
     if (current.weather[0].id !== 800) {
-      return "Yes"
+      return "Yes";
     }
     if (current.weather[0].id > 800) {
-      return "Maybe"
+      return "Maybe";
     }
-    return "No"
+    return "No";
   };
 
   return (
@@ -25,13 +25,11 @@ function BrollyWeather({ data, location }) {
         <span className="brolly-question">Will you need a brolly in </span>
         {current.name}?
       </h2>
-      <ErrorBoundary>
-        <h3>{getBrolly()}</h3>
-        <p>{getBrollyMessage(current)}</p>
-      </ErrorBoundary>
+      <h3>{getBrolly()}</h3>
+      <p>{getBrollyMessage(current)}</p>
     </div>
   );
 }
 
-export default BrollyWeather
+export default BrollyWeather;
 // This component is responsible for displaying the answer to the question Do you need a brolly today?
