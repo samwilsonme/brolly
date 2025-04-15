@@ -1,11 +1,117 @@
-body {
-  margin: 0;
-  padding: 0;
-  font-family: "Outfit", sans-serif;
+
+h1 {
+  font-size: 4rem;
+  font-weight: 700;
+}
+h2 {
+  font-size: 2.5rem;
+  font-weight: 600;
+}
+h3 {
+  font-size: 2rem;
+  font-weight: 500;
+}
+h4, p {
+  font-size: 1.25rem;
+  font-weight: 500;
 }
 
-.app-container {
+.weather-page {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 800px;
+  max-width: 1200px;
   height: 100vh;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  text-wrap: balance;
+}
+
+.weather-page header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.weather-page header .search {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.weather-page .content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.weather-page .content article {
+  width: 50%;
+  padding: 2rem;
+  border-radius: 3.5rem 0 0 3.5rem;
+  background-color: coral;
+}
+
+.weather-page .content article.brolly .question {
+  display: block;
+  font-size: 2rem;
+}
+
+.weather-page .content article.brolly .answer h3{
+  font-size: 4rem;
+  margin: 2rem 0;
+}
+
+.weather-page .content aside {
+  padding: 2rem;
+  border-radius: 3.5rem;
+  width: 50%;
+  background-color: cadetblue;
+}
+
+.weather-page .content aside .current {
+  background-color: lightcyan;
+  padding: 2rem;
+  border-radius: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.weather-page .content aside .current .details {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+  gap: 2rem;
+}
+
+  .weather-page .content aside .current .details img { /* change p to span? */
+    width: 40%;
+  }
+
+  .weather-page .content aside .current .details p { /* change p to span? */
+    font-size: 3rem;
+    font-weight: 500;
+  }
+
+.weather-page .content aside .expected {
+  background-color: lightcyan;
+  padding: 2rem;
+  border-radius: 1.5rem;
+}
+
+.weather-page .content aside .expected .list {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-top: 2rem;
+  gap: 2rem;
 }

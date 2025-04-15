@@ -6,10 +6,10 @@ function Weather({time, condition, temperature, icon}) {
   const iconsrc = getWeatherIcon(icon);
 
   return (
-    <div className="weather">
-      {time && <h3>{time}</h3>}
+    <div className="details">
+      {time && <h4>{time}</h4>}
       <img src={iconsrc} alt={condition} />
-      <p>{Math.round(temperature)}°C</p>
+      <p>{Math.round(temperature)}°c</p>
     </div>
   );
 }

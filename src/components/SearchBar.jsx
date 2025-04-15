@@ -61,34 +61,28 @@ function SearchBar() {
   };
 
   return (
-    <div className="search-bar-container">
-      <div className="search-area">
-        <div className="search-bar">
-          <div className="magnifying-glass" onClick={handleSearch}>
-            <img src={icon} alt="Search" />
-          </div>
-          <input
-            type="text"
-            placeholder="Search Location"
-            value={searchTerm}
-            onChange={handleChange}
-            onKeyDown={handleKeyDown}
-          />
-        </div>
-        {suggestions.length > 0 && (
-          <ul className="suggestions-list">
-            {suggestions.map((suggestion, index) => {
-              const displayName = (suggestion.name_2 && suggestion.name_2.trim() !== "") ? suggestion.name_2 : suggestion.name_1;
-              const postcodeArea = extractPostcodeArea(suggestion.postcode_district);
-              return (
-                <li key={index} onClick={() => handleSuggestionClick(suggestion)}>
-                  {displayName} ({postcodeArea})
-                </li>
-              );
-            })}
-          </ul>
-        )}
-      </div>
+    <div className="search">
+      <img src={icon} alt="Search" onClick={handleSearch} />
+      <input
+        type="text"
+        placeholder="Search Location"
+        value={searchTerm}
+        onChange={handleChange}
+        onKeyDown={handleKeyDown}
+      />
+      {suggestions.length > 0 && (
+        <ul className="suggestions-list">
+          {suggestions.map((suggestion, index) => {
+            const displayName = (suggestion.name_2 && suggestion.name_2.trim() !== "") ? suggestion.name_2 : suggestion.name_1;
+            const postcodeArea = extractPostcodeArea(suggestion.postcode_district);
+            return (
+              <li key={index} onClick={() => handleSuggestionClick(suggestion)}>
+                {displayName} ({postcodeArea})
+              </li>
+            );
+          })}
+        </ul>
+      )}
     </div>
   );
 }

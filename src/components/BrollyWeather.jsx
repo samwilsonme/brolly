@@ -20,14 +20,10 @@ function BrollyWeather() {
   };
 
   return (
-    <div className="brolly-weather">
-      <h2>
-        <span className="brolly-question">Will you need a brolly in </span>
-        {current.name}?
-      </h2>
+    <section className="answer">
       <h3>{getBrolly()}</h3>
       <p>{getBrollyMessage(current)}</p>
-    </div>
+    </section>
   );
 }
 

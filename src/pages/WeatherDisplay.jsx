@@ -1,6 +1,7 @@
 import { useSearchParams } from "react-router-dom";
 import { useWeather } from "../hooks/useWeather";
 import { WeatherProvider } from "../context/WeatherContext";
+import LocationSection from "../components/LocationSection";
 import BrollyWeather from "../components/BrollyWeather";
 import CurrentWeather from "../components/CurrentWeather";
 import ExpectedWeather from "../components/ExpectedWeather";
@@ -21,21 +22,22 @@ export function WeatherDisplay() {
 
   return (
     <WeatherProvider value={{ current, forecast, location }}>
-      <div className="weather-display">
-        <div className="weather-header">
-          <div className="logo">
-            <h1>BROLLY LOGO</h1>
-          </div>
+      <main className="weather-page">
+        <header>
+          <h1>BROLLY LOGO</h1>
           <SearchBar />
-        </div>
-        <div className="weather-container">
-          <BrollyWeather />
-          <div className="current-expected">
+        </header>
+        <div className="content">
+          <article className="brolly">
+            <LocationSection />
+            <BrollyWeather />
+          </article>
+          <aside className="weather">
             <CurrentWeather />
             <ExpectedWeather />
-          </div>
+          </aside>
         </div>
-      </div>
+      </main>
     </WeatherProvider>
   );
 }
