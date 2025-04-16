@@ -8,7 +8,7 @@ h2 {
   font-weight: 600;
 }
 h3 {
-  font-size: 2rem;
+  font-size: 1.75rem;
   font-weight: 500;
 }
 h4, p {
@@ -23,11 +23,11 @@ h4, p {
   justify-content: center;
   min-width: 800px;
   max-width: 1200px;
-  height: 100vh;
+  min-height: 100vh;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
-  text-wrap: balance;
+  text-wrap: pretty;
 }
 
 .weather-page header {
@@ -54,9 +54,9 @@ h4, p {
 
 .weather-page .content article {
   width: 50%;
-  padding: 2rem;
+  padding: 4rem;
   border-radius: 3.5rem 0 0 3.5rem;
-  background-color: coral;
+  background-color: #f7f7f7;
 }
 
 .weather-page .content article.brolly .question {
@@ -64,20 +64,24 @@ h4, p {
   font-size: 2rem;
 }
 
-.weather-page .content article.brolly .answer h3{
-  font-size: 4rem;
+.weather-page .content article.brolly .answer h3 {
+  font-size: 6rem;
   margin: 2rem 0;
+}
+
+.weather-page .content article.brolly .answer p {
+  font-size: 1.5rem;
 }
 
 .weather-page .content aside {
   padding: 2rem;
   border-radius: 3.5rem;
   width: 50%;
-  background-color: cadetblue;
+  background-color: #d9d9d9;
 }
 
 .weather-page .content aside .current {
-  background-color: lightcyan;
+  background-color: #f7f7f7;
   padding: 2rem;
   border-radius: 1.5rem;
   margin-bottom: 2rem;
@@ -92,17 +96,17 @@ h4, p {
   gap: 2rem;
 }
 
-  .weather-page .content aside .current .details img { /* change p to span? */
-    width: 40%;
+  .weather-page .content aside .current .details img {
+    width: 8rem;
   }
 
-  .weather-page .content aside .current .details p { /* change p to span? */
-    font-size: 3rem;
+  .weather-page .content aside .current .details p {
+    font-size: 6rem;
     font-weight: 500;
   }
 
 .weather-page .content aside .expected {
-  background-color: lightcyan;
+  background-color: #f7f7f7;
   padding: 2rem;
   border-radius: 1.5rem;
 }
@@ -114,4 +118,47 @@ h4, p {
   justify-content: space-evenly;
   margin-top: 2rem;
   gap: 2rem;
+}
+
+.weather-page .content aside .expected .list .details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.weather-page .content aside .expected .list .details img {
+  width: 4rem;
+}
+
+.weather-page .content aside .expected .list .details p {
+  width: 3rem;
+}
+
+
+@media (max-width: 800px) {
+  
+  .weather-page {
+    min-width: 100%;
+  }
+
+  .weather-page .content {
+    flex-direction: column;
+  }
+
+  .weather-page .content article {
+    width: 100%;
+    border-radius: 3.5rem;
+    background-color: transparent;
+    padding: 2rem;
+  }
+  .weather-page .content aside {
+    width: 100%;
+    padding: 0;
+    background-color: transparent;
+  }
+
 }
