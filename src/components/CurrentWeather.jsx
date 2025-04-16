@@ -10,16 +10,14 @@ function CurrentWeather() {
   }
 
   return (
-    <div className="current-weather">
+    <section className="current">
       <h2>Currently</h2>
-      <div className="details">
-        <Weather
-          condition={current.weather[0].main}
-          temperature={current.main.temp}
-          icon={current.weather[0].icon}
-        />
-      </div>
-    </div>
+      <Weather
+        condition={current.weather[0].main}
+        temperature={current.main.temp}
+        icon={current.weather[0].icon}
+      />
+    </section>
   );
 }
 

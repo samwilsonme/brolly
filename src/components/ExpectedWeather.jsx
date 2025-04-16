@@ -33,9 +33,9 @@ function ExpectedWeather() {
   };
 
   return (
-    <div className="expected-weather">
+    <section className="expected">
       <h3>{nextBrolly()}</h3>
-      <div className="expected-list">
+      <div className="list">
         {forecast.list.slice(0, 5).map((item, index) => (
           <Weather
             key={index}
@@ -46,7 +46,7 @@ function ExpectedWeather() {
           />
         ))}
       </div>
-    </div>
+    </section>
   );
 }
 
