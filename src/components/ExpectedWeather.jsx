@@ -16,11 +16,11 @@ function ExpectedWeather() {
       const time = formatTime(item.dt_txt);
   
       if (weatherCode > 700 && weatherCode < 800) {
-        return `Not looking great out there around ${time}. Take care!`;
+        return `Not looking great around ${time}`;
       } else if (weatherCode > 800) {
-        return `Might be unpleasant later around ${time}. Look out!`;
+        return `Might be unpleasant around ${time}`;
       } else if (weatherCode !== 800) {
-        return `Wet weather expected around ${time}. Brolly time!`;
+        return `Wet weather expected around ${time}`;
       }
     }
     return "Looking good up there! Enjoy!";
