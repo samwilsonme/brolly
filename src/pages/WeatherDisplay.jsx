@@ -5,9 +5,10 @@ import LocationSection from "../components/LocationSection";
 import BrollyWeather from "../components/BrollyWeather";
 import CurrentWeather from "../components/CurrentWeather";
 import ExpectedWeather from "../components/ExpectedWeather";
-import SearchBar from "../components/SearchBar";
 import "./LandingSearch.css";
 import './WeatherDisplay.css';
+import logo from '../assets/logo/brolly.svg'
+import search from '../assets/icons/search.svg'
 
 export function WeatherDisplay() {
   const [params] = useSearchParams();
@@ -24,8 +25,11 @@ export function WeatherDisplay() {
     <WeatherProvider value={{ current, forecast, location }}>
       <main className="weather-page">
         <header>
-          <h1>BROLLY LOGO</h1>
-          <SearchBar />
+          <h1>Brolly: Get Your Local UK Weather Forecast and Umbrella Guidance</h1>
+          <img src={logo} alt="brolly" />
+          <a href="/" className="search">
+            <img src={search} alt="Search" />
+          </a>
         </header>
         <div className="content">
           <article className="brolly">

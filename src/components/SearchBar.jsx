@@ -62,16 +62,18 @@ function SearchBar() {
 
   return (
     <div className="search">
-      <img src={icon} alt="Search" onClick={handleSearch} />
-      <input
-        type="text"
-        placeholder="Search Location"
-        value={searchTerm}
-        onChange={handleChange}
-        onKeyDown={handleKeyDown}
-      />
+      <div className="search-bar">
+        <img src={icon} alt="Search" onClick={handleSearch} />
+        <input
+          type="text"
+          placeholder="Search Location"
+          value={searchTerm}
+          onChange={handleChange}
+          onKeyDown={handleKeyDown}
+        />
+      </div>
       {suggestions.length > 0 && (
-        <ul className="suggestions-list">
+        <ul className="search-suggestion">
           {suggestions.map((suggestion, index) => {
             const displayName = (suggestion.name_2 && suggestion.name_2.trim() !== "") ? suggestion.name_2 : suggestion.name_1;
             const postcodeArea = extractPostcodeArea(suggestion.postcode_district);
