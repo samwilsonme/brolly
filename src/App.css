@@ -64,7 +64,115 @@ h3 {
 h4 {
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-bold);
+  color: var(--text-light);
 }
+
+p {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-regular);
+  color: var(--text-light);
+}
+
+/* Search Page Layout */
+.search-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  min-width: 768px;
+  max-width: 1000px;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: var(--space-lg);
+  text-align: center;
+}
+
+.search-page header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 8rem;
+  margin-top: 25%;
+
+  & h1, p {
+    display: none;
+  }
+
+  & img {
+    height: 100%;
+  }
+
+}
+
+.search-page .search {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  margin-top: var(--space-xl);
+
+  & .search-bar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+    background-color: var(--background-light);
+    padding: var(--space-lg);
+    border-radius: var(--border-radius-md);
+    gap: var(--space-md);
+    width: 100%;
+    height: 4rem;
+    
+    & img {
+      width: 1.5rem;
+    }
+
+    & input {
+      border: none;
+      background: transparent;
+      outline: none;
+      width: 100%;
+
+      & ::placeholder {
+        color: var(--text-light);
+      }
+    }
+
+  }
+
+  & .search-suggestion {
+    list-style: none;
+    background-color: var(--background-dark);
+    padding: var(--space-md);
+    border-radius: 0 0 var(--border-radius-md) var(--border-radius-md) ;
+    width: 80%;
+    font-size: var(--font-size-sm);
+    
+    & li {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: start;
+      padding: var(--space-xs) var(--space-sm);
+      border-radius: var(--border-radius-sm);
+      cursor: pointer;
+      transition: var(--transition);
+      font-style: italic;
+      color: var(--text-light);
+
+      &:hover {
+        background-color: var(--background-light);
+        color: var(--text-dark);
+      }
+    }
+    
+  }
+
+}
+
 
 /* Weather Page Layout */
 .weather-page {
@@ -87,7 +195,7 @@ h4 {
   align-items: start;
   justify-content: space-between;
   width: 100%;
-  height: 8rem;
+  height: 6rem;
 
   & h1 {
     display: none;
@@ -99,7 +207,7 @@ h4 {
 
   & .search {
     background-color: var(--background-light);
-    padding: var(--space-md);
+    padding: var(--space-sm);
     border-radius: var(--border-radius-md);
 
     & img {
@@ -128,6 +236,7 @@ h4 {
     display: block;
     font-size: var(--font-size-base);
     font-weight: var(--font-weight-regular);
+    color: var(--text-light);
     font-style: italic;
   }
 
@@ -166,7 +275,7 @@ h4 {
       gap: var(--space-md);
 
       & img {
-        width: 30%;
+        width: 6rem;
       }
 
       & p {
@@ -222,11 +331,25 @@ h4 {
     --space-xl: 2.5rem;
   }
 
+  .search-page {
+    min-width: 100%;
+
+    & header {
+      margin-top: 0;
+      height: 6rem;
+    }
+
+    & .search {
+      width: 100%;;
+    }
+
+  }
+
   .weather-page {
     min-width: 100%;
 
     & header {
-      height: 4rem
+      height: 3rem
     }
 
     & .search img {
@@ -255,7 +378,7 @@ h4 {
         
         & .current {
           & img  {
-            width: 25%;
+            width: 5rem;
           }
         }
       }
