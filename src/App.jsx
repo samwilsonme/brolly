@@ -6,7 +6,7 @@ import { WeatherDisplay } from './pages/WeatherDisplay';
 function App() {
 
   return (
-    <div className="app-container">
+    <div className="app">
       <Routes>
         <Route path="/" element={<LandingSearch />} />
         <Route path="/weather" element={<WeatherDisplay />} />
