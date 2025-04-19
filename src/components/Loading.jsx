@@ -13,7 +13,6 @@ export function Loading(page) {
 }
 
 export function Skeleton({ section, blocks = 1, type = "column", margin = "none" }) {
-  console.log(section, blocks);
   return (
     <div className={section}>
       <div className={`skeleton-${type} skeleton-${margin}`}>
@@ -24,9 +23,4 @@ export function Skeleton({ section, blocks = 1, type = "column", margin = "none"
       </div>
     </div>
   );
-}
-
-function SkeletonBlock(skeleton) {
-
-
 }
