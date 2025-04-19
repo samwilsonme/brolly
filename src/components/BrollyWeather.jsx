@@ -1,13 +1,21 @@
 import "./BrollyWeather.css";
 import { getBrollyMessage } from "../hooks/useBrolly"
 import { useWeatherContext } from "../context/WeatherContext";
+import { Skeleton } from "../components/Loading";
 
 function BrollyWeather() {
-  const { current } = useWeatherContext();
+  const { current, loading, error } = useWeatherContext();
 
-  if (!current || !current.weather) {
-    return <div>No weather data available</div>;
+  if (loading) {
+    return <Skeleton section="" blocks={2} margin="top"/>;
+    //return <div className="answer"><p className="loading">Loading...</p></div>;
   }
+  /*if (error) {
+    return <div className="answer"><p className="error">Error: {error}</p></div>;
+  }
+  if (!current || !current.weather) {
+    return <div className="answer"><p className="error">No weather data available</p></div>;
+  }*/
 
   const getBrolly = () => {
     if (current.weather[0].id !== 800) {
