@@ -1,13 +1,22 @@
-import "./ExpectedWeather.css";
-import Weather from "./Weather";
 import { useWeatherContext } from "../context/WeatherContext";
+import Boundary from "./Boundary";
+import ErrorBoundary from "./ErrorBoundary";
+import Weather from "./Weather";
+import { Skeleton } from "../components/Loading";
 
 function ExpectedWeather() {
-  const { forecast } = useWeatherContext();
+  const { forecast, loading, error } = useWeatherContext();
 
-  if (!forecast || !forecast.list || forecast.list.length < 5) {
-    return <div>No forecast data available</div>;
+  if (loading) {
+    return <Skeleton section="expected" blocks={5} type="row"/>;
+    //return <div className="location"><p className="loading">Loading...</p></div>;
   }
+  /*if (error) {
+    return <div className="expected"><p className="error">Error: {error}</p></div>;
+  }
+  if (!forecast || !forecast.list || forecast.list.length < 5) {
+    return <div className="expected"><p className="error">No weather data available</p></div>;
+  }*/
 
   // Check the forecast for wet weather and return message
   const nextBrolly = () => {
@@ -34,18 +43,18 @@ function ExpectedWeather() {
 
   return (
     <section className="expected">
-      <h3>{nextBrolly()}</h3>
-      <div className="list">
-        {forecast.list.slice(0, 5).map((item, index) => (
-          <Weather
-            key={index}
-            condition={item.weather[0].main}
-            temperature={item.main.temp}
-            icon={item.weather[0].icon}
-            time={formatTime(item.dt_txt)}
-          />
-        ))}
-      </div>
+        <h3>{nextBrolly()}</h3>
+        <div className="list">
+          {forecast.list.slice(0, 5).map((item, index) => (
+            <Weather
+              key={index}
+              condition={item.weather[0].main}
+              temperature={item.main.temp}
+              icon={item.weather[0].icon}
+              time={formatTime(item.dt_txt)}
+            />
+          ))}
+        </div>
     </section>
   );
 }
