@@ -2,6 +2,7 @@ import {  Routes, Route } from 'react-router-dom';
 import './App.css';
 import { LandingSearch } from './pages/LandingSearch';
 import { WeatherDisplay } from './pages/WeatherDisplay';
+import { NotFound } from './pages/NotFound';
 
 function App() {
 
@@ -10,6 +11,7 @@ function App() {
       <Routes>
         <Route path="/" element={<LandingSearch />} />
         <Route path="/weather" element={<WeatherDisplay />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
   )

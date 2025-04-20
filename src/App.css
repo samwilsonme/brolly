@@ -85,6 +85,15 @@ p {
   text-align: center;
 }
 
+.not-found {
+  margin-top: var(--space-lg);
+
+  & a, a:visited {
+    text-decoration: none;
+    color: powderblue;
+  }
+}
+
 /* Search Page Layout */
 .search-page {
   display: flex;

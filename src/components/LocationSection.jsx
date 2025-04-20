@@ -18,7 +18,7 @@ function LocationSection() {
   return (
     <section className="location">
       <h2>
-        <span className="question">Will you need a brolly in </span>
+        <span className="question">Will you need an umbrella in </span>
         {current.name}?
       </h2>
     </section>
