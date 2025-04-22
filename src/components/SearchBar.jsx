@@ -1,10 +1,10 @@
 import "./SearchBar.css";
-import { useState, useEffect } from "react";
+import { React, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import icon from "../assets/icons/search.svg";
 import data from '../data/uk_locations.min.json'; // Import the local JSON file
 
-function SearchBar() {
+function SearchBar({modal = false}) {
   const [searchTerm, setSearchTerm] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const navigate = useNavigate();
@@ -18,6 +18,8 @@ function SearchBar() {
     if (searchTerm.trim()) {
       navigate(`/weather?location=${encodeURIComponent(searchTerm.trim())}`);
     };
+    // If in a modal, close the modal
+    if (modal) { modal(false) }
   };
 
   const handleKeyDown = (e) => {
@@ -49,6 +51,8 @@ function SearchBar() {
     setSearchTerm(selectedCityName);
     setSuggestions([]);
     navigate(`/weather?location=${encodeURIComponent(selectedCityName)}`);
+    // If in a modal, close the modal
+    if (modal) { modal(false) }
   }
 
   const extractPostcodeArea = (postcode) => {
@@ -63,8 +67,9 @@ function SearchBar() {
   return (
     <div className="search">
       <div className="search-bar">
-        <img src={icon} alt="Search" onClick={handleSearch} />
-        <input
+        <span><img src={icon} alt="Search" onClick={handleSearch} /></span>
+        <input 
+          autoFocus
           type="text"
           placeholder="Search Location"
           value={searchTerm}
@@ -78,8 +83,9 @@ function SearchBar() {
             const displayName = (suggestion.name_2 && suggestion.name_2.trim() !== "") ? suggestion.name_2 : suggestion.name_1;
             const postcodeArea = extractPostcodeArea(suggestion.postcode_district);
             return (
-              <li key={index} onClick={() => handleSuggestionClick(suggestion)}>
-                {displayName} ({postcodeArea})
+              <li key={index} tabindex={index+1} onClick={() => handleSuggestionClick(suggestion)}>
+                <span>{postcodeArea}</span>
+                <p>{displayName}</p>
               </li>
             );
           })}

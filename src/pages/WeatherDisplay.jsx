@@ -1,4 +1,4 @@
-import {use, useState} from "react";
+import { useState} from "react";
 import { useSearchParams } from "react-router-dom";
 import { useWeather } from "../hooks/useWeather";
 import { WeatherProvider } from "../context/WeatherContext";
@@ -58,7 +58,7 @@ export function WeatherDisplay() {
             </aside>
           </div>
         </main>
-        {modal && <Modal modal={setModal} style="modal-page search-page"><SearchBar /></Modal>}
+        {modal && <Modal modal={setModal} style="modal-page search-page"><SearchBar modal={setModal}/></Modal>}
       </WeatherProvider>
     </ErrorBoundary>
   );
