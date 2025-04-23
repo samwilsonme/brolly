@@ -1,7 +1,7 @@
 import {  Routes, Route } from 'react-router-dom';
 import './App.css';
 import { LandingSearch } from './pages/LandingSearch';
-import { WeatherDisplay } from './pages/WeatherDisplay';
+import { WeatherDisplay } from './pages/WeatherDisplayGeo';
 import { NotFound } from './pages/NotFound';
 
 function App() {

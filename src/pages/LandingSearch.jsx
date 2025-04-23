@@ -1,13 +1,11 @@
-import { useState} from "react";
 import { useSearchParams } from "react-router-dom";
 import ErrorBoundary from "../components/ErrorBoundary";
-import SearchBar from "../components/SearchBar";
+import SearchBar from "../components/SearchBarGeo";
+import GeoLocation from "../components/GeoLocation";
 import logo from '../assets/logo/brolly-question.svg'
-import search from '../assets/icons/search.svg'
-import Modal from "../components/Modal";
+
 
 export function LandingSearch() {
-  const [modal, setModal] = useState(false)
   const [params] = useSearchParams();
   const error = params.get("error");
 
@@ -30,12 +28,9 @@ export function LandingSearch() {
           <p>Do you need an umbrella today?</p>
           <img src={logo} alt="brolly" />
         </header>
-        <a className="search-placeholder" onClick={() => setModal(true)}>
-          <img src={search} alt="Search" />
-          <p>Search Location</p>
-        </a>
         {errorMessage && <div className="error-message"><p>{errorMessage} Please try again.</p></div>}
-        {modal && <Modal modal={setModal} style="modal-page search-page"><SearchBar modal={setModal}/></Modal>}
+        <SearchBar />
+        <GeoLocation />
       </main>
     </ErrorBoundary>
   );
