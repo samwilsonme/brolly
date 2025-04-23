@@ -3,7 +3,7 @@ import ErrorBoundary from "../components/ErrorBoundary";
 import SearchBar from "../components/SearchBarGeo";
 import GeoLocation from "../components/GeoLocation";
 import logo from '../assets/logo/brolly-question.svg'
-import { use } from "react";
+
 
 export function LandingSearch() {
   const [params] = useSearchParams();
