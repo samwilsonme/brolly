@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { useSearchParams } from "react-router-dom";
+//import { useSearchParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { useWeather } from "../hooks/useWeatherGeo";
 import { WeatherProvider } from "../context/WeatherContext";
 import LocationSection from "../components/LocationSection";
@@ -18,11 +19,16 @@ import useGeoLocation from "../hooks/useGeoLocation";
 
 export function WeatherDisplay() {
   const [modal, setModal] = useState(false);
-  const [params] = useSearchParams();
-  const queryLat = params.get("lat");
-  const queryLon = params.get("lon");
+  //const [params] = useSearchParams();
+  //const queryLat = params.get("lat");
+  //const queryLon = params.get("lon");
+  const location = useLocation(); // Use useLocation to access the state
+  const { state } = location; // Extract the state object
+  const queryLat = state?.lat; // Access latitude from state
+  const queryLon = state?.lon; // Access longitude from state
   const { latitude: geoLat, longitude: geoLon, error: geoError } = useGeoLocation();
-  const [location, setLocation] = useState(null);
+  //const [location, setLocation] = useState(null);
+  const [locationName, setLocationName] = useState(null); // renamed
   const [isLoadingGeo, setIsLoadingGeo] = useState(true);
 
   // Determine latitude and longitude to use for fetching weather
@@ -31,11 +37,11 @@ export function WeatherDisplay() {
 
   useEffect(() => {
     if (queryLat && queryLon) {
-      setLocation(`${parseFloat(queryLat).toFixed(2)},${parseFloat(queryLon).toFixed(2)}`);
+      setLocationName(`${parseFloat(queryLat).toFixed(2)},${parseFloat(queryLon).toFixed(2)}`);
     } else if (geoLat && geoLon) {
-      setLocation(`${geoLat.toFixed(2)},${geoLon.toFixed(2)}`);
+      setLocationName(`${geoLat.toFixed(2)},${geoLon.toFixed(2)}`);
     } else {
-      setLocation("Cambourne, UK"); // Default if no data or params
+      setLocationName(""); // Default if no data or params
     }
   }, [queryLat, queryLon, geoLat, geoLon]);
 

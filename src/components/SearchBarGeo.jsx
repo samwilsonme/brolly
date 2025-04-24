@@ -23,7 +23,9 @@ function SearchBar() {
       });
 
       if (selectedLocation && typeof selectedLocation.latitude === 'number' && typeof selectedLocation.longitude === 'number') {
-        navigate(`/weather?lat=${selectedLocation.longitude}&lon=${selectedLocation.latitude}`);
+        // json file sets latitude and longitude incorrectly
+        //navigate(`/weather?lat=${selectedLocation.longitude}&lon=${selectedLocation.latitude}`);
+        navigate('/weather', { state: { lat: selectedLocation.longitude, lon: selectedLocation.latitude } });
       } else {
         console.warn(`Coordinates not found for "${searchTerm}". Cannot navigate with lat/lon.`);
         // Optionally handle the case where coordinates are not found (e.g., display a message)
@@ -62,7 +64,8 @@ function SearchBar() {
     setSearchTerm(suggestion.displayName);
     setSuggestions([]);
     // json file sets latitude and longitude incorrectly
-    navigate(`/weather?lat=${suggestion.longitude}&lon=${suggestion.latitude}`);
+    //navigate(`/weather?lat=${suggestion.longitude}&lon=${suggestion.latitude}`);
+    navigate('/weather', { state: { lat: suggestion.longitude, lon: suggestion.latitude } });
   }
 
   const extractPostcodeArea = (postcode) => {
