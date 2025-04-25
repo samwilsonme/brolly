@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
-//import { useSearchParams } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { useWeather } from "../hooks/useWeatherGeo";
 import { WeatherProvider } from "../context/WeatherContext";
-import LocationSection from "../components/LocationSection";
+import LocationSection from "../components/LocationSectionGeo";
 import BrollyWeather from "../components/BrollyWeather";
 import CurrentWeather from "../components/CurrentWeather";
 import ExpectedWeather from "../components/ExpectedWeather";
@@ -15,48 +14,30 @@ import "./LandingSearch.css";
 import './WeatherDisplay.css';
 import logo from '../assets/logo/brolly.svg';
 import search from '../assets/icons/search.svg';
-import useGeoLocation from "../hooks/useGeoLocation";
 
 export function WeatherDisplay() {
   const [modal, setModal] = useState(false);
-  //const [params] = useSearchParams();
-  //const queryLat = params.get("lat");
-  //const queryLon = params.get("lon");
   const location = useLocation(); // Use useLocation to access the state
   const { state } = location; // Extract the state object
   const queryLat = state?.lat; // Access latitude from state
   const queryLon = state?.lon; // Access longitude from state
-  const { latitude: geoLat, longitude: geoLon, error: geoError } = useGeoLocation();
-  //const [location, setLocation] = useState(null);
-  const [locationName, setLocationName] = useState(null); // renamed
-  const [isLoadingGeo, setIsLoadingGeo] = useState(true);
-
-  // Determine latitude and longitude to use for fetching weather
-  const finalLat = queryLat ? parseFloat(queryLat) : geoLat;
-  const finalLon = queryLon ? parseFloat(queryLon) : geoLon;
+  const [locationName, setLocationName] = useState(""); // renamed
 
   useEffect(() => {
     if (queryLat && queryLon) {
       setLocationName(`${parseFloat(queryLat).toFixed(2)},${parseFloat(queryLon).toFixed(2)}`);
-    } else if (geoLat && geoLon) {
-      setLocationName(`${geoLat.toFixed(2)},${geoLon.toFixed(2)}`);
     } else {
-      setLocationName(""); // Default if no data or params
+      setLocationName(""); // Default if no data in state
+      console.warn("No location data received via navigation state. Using default location.");
+      // Optionally handle the case where no state is passed (e.g., redirect, display error)
     }
-  }, [queryLat, queryLon, geoLat, geoLon]);
+  }, [queryLat, queryLon]);
 
-  useEffect(() => {
-    if (geoLat || geoError) {
-      setIsLoadingGeo(false);
-    }
-  }, [geoLat, geoError]);
+  // Fetch weather data using the latitude and longitude from the state
+  const { current, forecast, loading: isWeatherLoading, error: weatherError } = useWeather(queryLat, queryLon);
 
-  // Fetch weather data using the determined latitude and longitude
-  const { current, forecast, loading: isWeatherLoading, error: weatherError } = useWeather(finalLat, finalLon);
-
-  // Combine errors for UI display if needed
-  const combinedError = geoError || weatherError;
-  const isLoading = isLoadingGeo || isWeatherLoading;
+  const isLoading = isWeatherLoading;
+  const combinedError = weatherError;
 
   if (isLoading) {
     return (
@@ -69,9 +50,8 @@ export function WeatherDisplay() {
   if (combinedError) {
     return (
       <div className="weather-page">
-        <p className="error">Error: {combinedError}</p>
-        {geoError && <p className="error">Could not get your current location.</p>}
-        {weatherError && <p className="error">Could not load weather data.</p>}
+        <p className="error">Error loading weather data.</p>
+        {weatherError && <p className="error">{weatherError}</p>}
       </div>
     );
   }
@@ -79,14 +59,14 @@ export function WeatherDisplay() {
   if (!forecast || !forecast.list || forecast.list.length < 5) {
     return (
       <div className="weather-page">
-        <p className="error">No weather data available for {location}.</p>
+        <p className="error">No weather data available for {locationName}.</p>
       </div>
     );
   }
 
   return (
     <ErrorBoundary>
-      <WeatherProvider value={{ current, forecast, loading: isLoading, error: combinedError, location }}>
+      <WeatherProvider value={{ current, forecast, loading: isLoading, error: combinedError, location: locationName }}>
         <main className="weather-page">
           <header>
             <h1>Brolly: Get Your Local UK Weather Forecast and Umbrella Guidance</h1>

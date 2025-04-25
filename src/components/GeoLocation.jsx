@@ -4,11 +4,12 @@ import useGeoLocation from "../hooks/useGeoLocation";
 function GeoLocation() {
   const navigate = useNavigate();
   const { latitude, longitude, error } = useGeoLocation();
-
+  
   const handleGeoLocationClick = () => {
     if (latitude && longitude) {
       console.log("Location:", { latitude, longitude });
-      navigate("/weather");
+      //navigate("/weather");
+      navigate("/weather", { state: { lat: latitude, lon: longitude } });
     } else if (error) {
       console.error("Location error:", error);
     } else {

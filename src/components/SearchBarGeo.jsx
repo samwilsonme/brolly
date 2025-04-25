@@ -25,7 +25,13 @@ function SearchBar() {
       if (selectedLocation && typeof selectedLocation.latitude === 'number' && typeof selectedLocation.longitude === 'number') {
         // json file sets latitude and longitude incorrectly
         //navigate(`/weather?lat=${selectedLocation.longitude}&lon=${selectedLocation.latitude}`);
-        navigate('/weather', { state: { lat: selectedLocation.longitude, lon: selectedLocation.latitude } });
+        navigate('/weather', {
+          state: {
+            lat: selectedLocation.longitude,
+            lon: selectedLocation.latitude,
+            name: (selectedLocation.name_2 && selectedLocation.name_2.trim() !== "") ? selectedLocation.name_2 : selectedLocation.name_1,
+          },
+        }); // Include name in the state for search and geo to match up, for example cambourne uses caxton weather data
       } else {
         console.warn(`Coordinates not found for "${searchTerm}". Cannot navigate with lat/lon.`);
         // Optionally handle the case where coordinates are not found (e.g., display a message)
@@ -65,7 +71,13 @@ function SearchBar() {
     setSuggestions([]);
     // json file sets latitude and longitude incorrectly
     //navigate(`/weather?lat=${suggestion.longitude}&lon=${suggestion.latitude}`);
-    navigate('/weather', { state: { lat: suggestion.longitude, lon: suggestion.latitude } });
+    navigate('/weather', {
+      state: {
+        lat: suggestion.longitude,
+        lon: suggestion.latitude,
+        name: suggestion.displayName, // Include name in the state for search and geo to match up, for example cambourne uses caxton weather data
+      },
+    });
   }
 
   const extractPostcodeArea = (postcode) => {
