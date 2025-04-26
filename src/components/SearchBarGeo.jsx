@@ -17,19 +17,16 @@ function SearchBar() {
   const handleSearch = () => {
     if (searchTerm.trim()) {
       // Find the selected location data based on the searchTerm
-      const selectedLocation = locationData.find((location) => {
-        const searchableName = (location.name_2 && location.name_2.trim() !== "") ? location.name_2 : location.name_1;
-        return searchableName.toLowerCase() === searchTerm.trim().toLowerCase();
-      });
+      const selectedLocation = locationData.find((location) =>
+        location.name.toLowerCase() === searchTerm.trim().toLowerCase()
+      );
 
       if (selectedLocation && typeof selectedLocation.latitude === 'number' && typeof selectedLocation.longitude === 'number') {
-        // json file sets latitude and longitude incorrectly
-        //navigate(`/weather?lat=${selectedLocation.longitude}&lon=${selectedLocation.latitude}`);
         navigate('/weather', {
           state: {
-            lat: selectedLocation.longitude,
-            lon: selectedLocation.latitude,
-            name: (selectedLocation.name_2 && selectedLocation.name_2.trim() !== "") ? selectedLocation.name_2 : selectedLocation.name_1,
+            lat: selectedLocation.latitude,
+            lon: selectedLocation.longitude,
+            name: selectedLocation.name,
           },
         }); // Include name in the state for search and geo to match up, for example cambourne uses caxton weather data
       } else {
@@ -51,15 +48,14 @@ function SearchBar() {
 
     if (value.length > 0 && locationData.length > 0) {
       const filtered = locationData
-        .filter((location) => {
-          const searchableName = (location.name_2 && location.name_2.trim() !== "") ? location.name_2 : location.name_1;
-          return searchableName.toLowerCase().startsWith(value.toLowerCase());
-        })
+        .filter((location) =>
+          location.name.toLowerCase().startsWith(value.toLowerCase())
+        )
         .slice(0, 5); // Limit to 5 suggestions
 
       setSuggestions(filtered.map(location => ({
         ...location,
-        displayName: (location.name_2 && location.name_2.trim() !== "") ? location.name_2 : location.name_1,
+        displayName: location.name,
       })));
     } else {
       setSuggestions([]);
@@ -69,12 +65,10 @@ function SearchBar() {
   const handleSuggestionClick = (suggestion) => {
     setSearchTerm(suggestion.displayName);
     setSuggestions([]);
-    // json file sets latitude and longitude incorrectly
-    //navigate(`/weather?lat=${suggestion.longitude}&lon=${suggestion.latitude}`);
     navigate('/weather', {
       state: {
-        lat: suggestion.longitude,
-        lon: suggestion.latitude,
+        lat: suggestion.latitude,
+        lon: suggestion.longitude,
         name: suggestion.displayName, // Include name in the state for search and geo to match up, for example cambourne uses caxton weather data
       },
     });
@@ -104,7 +98,7 @@ function SearchBar() {
         <ul className="search-suggestion">
           {suggestions.map((suggestion, index) => (
             <li key={index} onClick={() => handleSuggestionClick(suggestion)}>
-              {suggestion.displayName} ({extractPostcodeArea(suggestion.postcode_district)})
+              {suggestion.displayName} ({extractPostcodeArea(suggestion.postcode)})
             </li>
           ))}
         </ul>
