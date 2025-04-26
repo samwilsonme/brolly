@@ -2,13 +2,12 @@ import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { useWeather } from "../hooks/useWeatherGeo";
 import { WeatherProvider } from "../context/WeatherContext";
+import { useNavigate } from "react-router-dom";
 import LocationSection from "../components/LocationSectionGeo";
 import BrollyWeather from "../components/BrollyWeather";
 import CurrentWeather from "../components/CurrentWeather";
 import ExpectedWeather from "../components/ExpectedWeather";
 import ErrorBoundary from "../components/ErrorBoundary";
-import SearchBar from "../components/SearchBarGeo";
-import Modal from "../components/Modal";
 
 import "./LandingSearch.css";
 import './WeatherDisplay.css';
@@ -16,7 +15,7 @@ import logo from '../assets/logo/brolly.svg';
 import search from '../assets/icons/search.svg';
 
 export function WeatherDisplay() {
-  const [modal, setModal] = useState(false);
+  const navigate = useNavigate();
   const location = useLocation(); // Use useLocation to access the state
   const { state } = location; // Extract the state object
   const queryLat = state?.lat; // Access latitude from state
@@ -71,7 +70,7 @@ export function WeatherDisplay() {
           <header>
             <h1>Brolly: Get Your Local UK Weather Forecast and Umbrella Guidance</h1>
             <img src={logo} alt="brolly" />
-            <a className="search" onClick={() => setModal(true)}>
+            <a className="search" onClick={() => navigate("/search")}>
               <img src={search} alt="Search" />
             </a>
           </header>
@@ -86,11 +85,6 @@ export function WeatherDisplay() {
             </aside>
           </div>
         </main>
-        {modal && (
-          <Modal modal={setModal} style="modal-page search-page">
-            <SearchBar />
-          </Modal>
-        )}
       </WeatherProvider>
     </ErrorBoundary>
   );
