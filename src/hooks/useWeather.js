@@ -1,17 +1,13 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import cityData from '../data/uk_locations.min.json'; // Import the local JSON file
 
 const apiKey = import.meta.env.VITE_WEATHER_API_KEY;
 const apiBase = "https://api.openweathermap.org/data/2.5";
 
-export function useWeather(selectedLocation) {
+export function useWeather(lat, lon) {
   const [current, setCurrent] = useState(null);
   const [forecast, setForecast] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const navigate = useNavigate();
-  const location = `${selectedLocation},GB` || "Cambridge,GB"; // Default to Cambridge,GB if no location is provided
 
   useEffect(() => {
     const fetchWeather = async () => {
@@ -20,52 +16,55 @@ export function useWeather(selectedLocation) {
       
       // Simulate a delay to test loading state
       //const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-      //await delay(3000);
-      
-      try {
-        const currentRes = await fetch(
-          `${apiBase}/weather?q=${location}&units=metric&appid=${apiKey}`
-        );
-        const forecastRes = await fetch(
-          `${apiBase}/forecast?q=${location}&units=metric&cnt=5&appid=${apiKey}` // added cnt=5 to limit results
-        );
-        
-        if (!currentRes.ok || !forecastRes.ok) {
-          // Check if the location exists
-          //console.log(selectedLocation);
-          const cityExists = cityData.some((city) => {
-            const searchableName = (city.name_2 && city.name_2.trim() !== "") ? city.name_2 : city.name_1;
-            return searchableName.toLowerCase() === selectedLocation.toLowerCase(); // Use selectedLocation instead of searchTerm
-          });
-          
-          if (!cityExists) {
-            console.log("City does not exist.");
-            navigate(`/?error=city&location=${encodeURIComponent(selectedLocation.trim())}`);
-          }
+      //await delay(10000);
 
-          throw new Error("Failed to fetch weather data");
+      // Validate latitude and longitude
+      if (typeof lat !== "number" || typeof lon !== "number") {
+        setError("Invalid latitude or longitude provided.");
+        setLoading(false);
+        return;
+      }
+
+      // Build API URLs
+      const apiUrlCurrent = `${apiBase}/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
+      const apiUrlForecast = `${apiBase}/forecast?lat=${lat}&lon=${lon}&units=metric&cnt=5&appid=${apiKey}`;
+
+      try {
+        // Fetch current and forecast weather in parallel
+        const [currentRes, forecastRes] = await Promise.all([
+          fetch(apiUrlCurrent),
+          fetch(apiUrlForecast)
+        ]);
+
+        // Check if either response is not OK
+        if (!currentRes.ok) {
+          const errorData = await currentRes.json();
+          throw new Error(errorData?.message || "Failed to fetch current weather data.");
+        }
+        if (!forecastRes.ok) {
+          const errorData = await forecastRes.json();
+          throw new Error(errorData?.message || "Failed to fetch forecast data.");
         }
 
+        // Parse JSON responses
         const currentData = await currentRes.json();
         const forecastData = await forecastRes.json();
 
+        // Update state with fetched data
         setCurrent(currentData);
         setForecast(forecastData);
 
-        //console.log("Current Weather Data:", currentData);
-        //console.log("Forecast Weather Data:", forecastData);
-        console.log("Location:", location);
-
+        console.log("Weather data fetched for:", `${lat},${lon}`);
       } catch (err) {
         setError(err.message);
-        console.log("Error fetching weather data:", err);
+        console.error("Error fetching weather data:", err);
       } finally {
         setLoading(false);
       }
     };
 
     fetchWeather();
-  }, [location]);
+  }, [lat, lon]);
 
   return { current, forecast, loading, error };
 }
