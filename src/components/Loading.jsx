@@ -1,25 +1,37 @@
 import "./Loading.css";
 
-export function Loading(page) {
+// Classic Loading Dots
+export function Loading({ section }) {
   return (
-    <div className={page}>
+    <div className={`loading-container ${section}`}>
       <div className="classic-dots">
-        <div></div>
-        <div></div>
-        <div></div>
+        <div className="dot"></div>
+        <div className="dot"></div>
+        <div className="dot"></div>
       </div>
     </div>
   );
 }
 
-export function Skeleton({ section, blocks = 1, type = "column", margin = "none" }) {
+// Skeleton Loader
+export function Skeleton({
+  section,
+  blocks = 1,
+  type = "column",
+  margin = "none",
+  height = "20px", // Default height for skeleton blocks
+  width = "100%" // Default width for skeleton blocks
+}) {
   return (
-    <div className={section}>
+    <div className={`${section}`}>
       <div className={`skeleton-${type} skeleton-${margin}`}>
-      {Array.from({ length: blocks }).map((_, index) => (
-        <div key={index} className="skeleton">
-        </div>
-      ))}
+        {Array.from({ length: blocks }).map((_, index) => (
+          <div
+            key={index}
+            className="skeleton"
+            style={{ height: height, width: width }}
+          ></div>
+        ))}
       </div>
     </div>
   );

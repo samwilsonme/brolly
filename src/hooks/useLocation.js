@@ -1,65 +1,40 @@
-import { useState, useEffect } from "react";
+import { useState, useCallback } from "react";
 
-const apiKey = import.meta.env.VITE_WEATHER_API_KEY;
-const apiBase = "http://api.openweathermap.org/geo/1.0/direct";
-
-export function useLocation(search, delay = 300) {
-  const [location, setLocation] = useState(null);
-  const [loading, setLoading] = useState(false);
+function useLocation() {
+  const [latitude, setLatitude] = useState(null);
+  const [longitude, setLongitude] = useState(null);
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    let timeoutId;
+  // Get user's current location
+  const getLocation = useCallback(() => {
+    setLoading(true);
+    setError(null); // Reset any previous errors
 
-    const fetchLocation = async () => {
-      setLoading(true);
-      setError(null);
-      try {
-        const locationRes = await fetch(
-          `${apiBase}?q=${search}&limit=5&appid=${apiKey}`
-        );
-
-        if (!locationRes.ok) {
-          throw new Error(`Failed to fetch location data: ${locationRes.status}`);
-        }
-
-        const locationData = await locationRes.json();
-
-        if (locationData.length === 0) {
-          setError("No matching locations found.");
-          setLocation(null);
-        } else {
-          // Filter the results to only include UK locations
-          const ukLocations = locationData.filter(loc => loc.country === "GB");
-          setLocation(ukLocations);
-
-          if (ukLocations.length === 0 && locationData.length > 0) {
-            setError("No matching UK locations found.");
-          }
-        }
-      } catch (err) {
-        setError(err.message);
-      } finally {
-        setLoading(false);
+    const handleSuccess = (position) => {
+      if (position?.coords) {
+        setLatitude(position.coords.latitude);
+        setLongitude(position.coords.longitude);
+      } else {
+        setError("Unable to retrieve location data.");
       }
-    };
-
-    // Only fetch if search term has at least 3 characters
-    if (search && search.trim().length >= 3) {
-      timeoutId = setTimeout(fetchLocation, delay);
-    } else {
-      setLocation(null);
       setLoading(false);
-      setError(null);
-      clearTimeout(timeoutId); // Clear any pending timeout
-    }
-
-    return () => {
-      clearTimeout(timeoutId); // Cleanup on unmount or when search changes
     };
-  }, [search, delay]);
 
-  return { location, loading, error };
+    const handleError = (err) => {
+      setError(err.message);
+      setLoading(false);
+    };
+
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(handleSuccess, handleError);
+    } else {
+      setError("Geolocation is not supported by this browser.");
+      setLoading(false);
+    }
+  }, []);
+
+  return { latitude, longitude, error, loading, getLocation };
 }
-// This hook is responsible for fetching location data based on the search term
-// It uses the OpenWeatherMap API to get location suggestions
+
+export default useLocation;

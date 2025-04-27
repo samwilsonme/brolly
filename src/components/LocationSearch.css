@@ -1,0 +1,119 @@
+.search-link-text  {
+  color: var(--text-light);
+}
+
+.search-link-icon {
+  background-color: var(--background-light);
+  padding: var(--space-sm);
+  border-radius: var(--border-radius-md);
+
+  & img {
+    width: 1.5rem;
+  }
+
+}
+
+.search-placeholder {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-top: var(--space-xl);
+  background-color: var(--background-light);
+  padding: var(--space-lg);
+  border-radius: var(--border-radius-md);
+  gap: var(--space-md);
+  height: 4rem;
+}
+
+.search {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-md);
+  width: 50%;
+  margin-top: var(--space-xl);
+
+  & .search-bar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+    background-color: var(--background-light);
+    padding: var(--space-lg);
+    border-radius: var(--border-radius-md);
+    gap: var(--space-md);
+    width: 100%;
+    height: 4rem;
+    
+    & img {
+      width: 1.5rem;
+    }
+
+    & input {
+      border: none;
+      background: transparent;
+      outline: none;
+      width: 100%;
+    }
+
+    & input::placeholder {
+      color: var(--text-light);
+    }
+
+  }
+
+  & .search-suggestion {
+    list-style: none;
+    background-color: var(--background-light);
+    padding: var(--space-md);
+    border-radius: var(--border-radius-md);
+    font-size: var(--font-size-sm);
+    width: 100%;
+    
+    & li {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: start;
+      gap: var(--space-sm);
+      padding: var(--space-xs) var(--space-sm);
+      border-radius: var(--border-radius-sm);
+      cursor: pointer;
+      transition: var(--transition);
+      color: var(--text-dark);
+
+      &:hover {
+        background-color: var(--background-dark);
+
+        & p {
+          color:black;
+        }
+
+        & span {
+          color: white;
+        }
+      }
+
+      & span {
+        color:gray;
+      }
+    }
+    
+  }
+
+}
+
+
+@media (max-width: 768px) {
+
+  .search-link-icon img {
+    width: 1rem !important;
+  }
+
+  & .search {
+    width: 100%;;
+  }
+
+}
