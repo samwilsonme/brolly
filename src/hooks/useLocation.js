@@ -6,32 +6,31 @@ function useLocation() {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  // Get user's current location
   const getLocation = useCallback(() => {
     setLoading(true);
     setError(null); // Reset any previous errors
 
-    const handleSuccess = (position) => {
-      if (position?.coords) {
-        setLatitude(position.coords.latitude);
-        setLongitude(position.coords.longitude);
-      } else {
-        setError("Unable to retrieve location data.");
-      }
-      setLoading(false);
-    };
-
-    const handleError = (err) => {
-      setError(err.message);
-      setLoading(false);
-    };
-
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(handleSuccess, handleError);
-    } else {
+    if (!navigator.geolocation) {
       setError("Geolocation is not supported by this browser.");
       setLoading(false);
+      return;
     }
+
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        if (position?.coords) {
+          setLatitude(position.coords.latitude);
+          setLongitude(position.coords.longitude);
+        } else {
+          setError("Unable to retrieve location data.");
+        }
+        setLoading(false);
+      },
+      (err) => {
+        setError(err.message || "An unknown error occurred while retrieving location.");
+        setLoading(false);
+      }
+    );
   }, []);
 
   return { latitude, longitude, error, loading, getLocation };

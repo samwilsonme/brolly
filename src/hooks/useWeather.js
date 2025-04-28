@@ -13,23 +13,21 @@ export function useWeather(lat, lon) {
     const fetchWeather = async () => {
       setLoading(true);
       setError(null);
-      
+
       // Simulate a delay to test loading state
       //const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-      //await delay(10000);
-
-      // Validate latitude and longitude
-      if (typeof lat !== "number" || typeof lon !== "number") {
-        setError("Invalid latitude or longitude provided.");
-        setLoading(false);
-        return;
-      }
-
-      // Build API URLs
-      const apiUrlCurrent = `${apiBase}/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
-      const apiUrlForecast = `${apiBase}/forecast?lat=${lat}&lon=${lon}&units=metric&cnt=5&appid=${apiKey}`;
-
+      //await delay(5000);
+      
       try {
+        // Validate latitude and longitude
+        if (typeof lat !== "number" || typeof lon !== "number") {
+          throw new Error("Invalid latitude or longitude provided.");
+        }
+
+        // Build API URLs
+        const apiUrlCurrent = `${apiBase}/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
+        const apiUrlForecast = `${apiBase}/forecast?lat=${lat}&lon=${lon}&units=metric&cnt=5&appid=${apiKey}`;
+
         // Fetch current and forecast weather in parallel
         const [currentRes, forecastRes] = await Promise.all([
           fetch(apiUrlCurrent),
@@ -53,11 +51,8 @@ export function useWeather(lat, lon) {
         // Update state with fetched data
         setCurrent(currentData);
         setForecast(forecastData);
-
-        console.log("Weather data fetched for:", `${lat},${lon}`);
       } catch (err) {
-        setError(err.message);
-        console.error("Error fetching weather data:", err);
+        setError(err.message || "An unexpected error occurred.");
       } finally {
         setLoading(false);
       }

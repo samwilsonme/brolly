@@ -5,22 +5,23 @@ import { Skeleton } from "./Loading";
 
 function WeatherCurrent() {
   const { current, loading, error } = useWeatherContext(); // Access data from WeatherContext
-
+  /*
   // Show loading skeleton while fetching data
   if (loading) {
     return <Skeleton section="current" blocks={2} type="row" />;
   }
 
-  // Error handling if there's an issue with fetching the weather data
+  // Error handling if there's an issue fetching the weather data
   if (error) {
-    return <div className="current"><p className="error">Error: {error}</p></div>;
+    throw new Error(error);
   }
-
-  // If current data is not available
+  
+  // If current weather data is unavailable
   if (!current || !current.weather) {
-    return <div className="current"><p className="error">No weather data available</p></div>;
+    throw new Error("Weather data incomplete.");
   }
-
+  */
+  
   return (
     <section className="current">
       <h2>Currently</h2>

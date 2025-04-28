@@ -19,8 +19,8 @@ export function Skeleton({
   blocks = 1,
   type = "column",
   margin = "none",
-  height = "20px", // Default height for skeleton blocks
-  width = "100%" // Default width for skeleton blocks
+  height,
+  width
 }) {
   return (
     <div className={`${section}`}>
