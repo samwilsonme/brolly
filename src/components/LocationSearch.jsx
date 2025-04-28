@@ -1,18 +1,18 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 
 import data from '../data/uk_locations.min.json'; // Import the local JSON file
 
-import icon from "../assets/icons/search.svg";
-import search from '../assets/icons/search.svg';
+import search from "../assets/icons/search.svg";
 
 import './LocationSearch.css';
 
-export function LocationSearchLink({type="text"}) {
+export function LocationSearchLink({ type = "text" }) {
   const navigate = useNavigate();
   if (type === "text") {
     return <a className={`search-link-${type}`} onClick={() => navigate("/location")}>Search Location Manually</a>
-  }else{
+  } else {
     return (
       <a className={`search-link-${type}`} onClick={() => navigate("/location")}>
         <img src={search} alt="Search" />
@@ -24,33 +24,45 @@ export function LocationSearchLink({type="text"}) {
 export function LocationSearch() {
   const [searchTerm, setSearchTerm] = useState("");
   const [suggestions, setSuggestions] = useState([]);
-  const [locationData, setLocationData] = useState([]); // State to hold the full location data from JSON
-  const [loading, setLoading] = useState(false); // Loading state for searching
+  const [locationData, setLocationData] = useState([]);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
-    setLoading(true);
-    setLocationData(data); // Load the entire JSON data into state
-    setLoading(false);
+    try {
+      setLoading(true);
+      setLocationData(data); // Load local data
+    } catch (error) {
+      //console.log("Failed to load location data:", error);
+      toast.error("Something went wrong loading location data.");
+    } finally {
+      setLoading(false);
+    }
   }, []);
 
   const handleSearch = () => {
-    if (searchTerm.trim()) {
-      const selectedLocation = locationData.find((location) =>
-        location.name.toLowerCase() === searchTerm.trim().toLowerCase()
-      );
+    try {
+      if (searchTerm.trim()) {
+        const selectedLocation = locationData.find((location) =>
+          location.name.toLowerCase() === searchTerm.trim().toLowerCase()
+        );
 
-      if (selectedLocation && typeof selectedLocation.latitude === 'number' && typeof selectedLocation.longitude === 'number') {
-        navigate('/weather', {
-          state: {
-            lat: selectedLocation.latitude,
-            lon: selectedLocation.longitude,
-            name: selectedLocation.name,
-          },
-        });
-      } else {
-        console.warn(`Coordinates not found for "${searchTerm}". Cannot navigate with lat/lon.`);
+        if (selectedLocation && typeof selectedLocation.latitude === 'number' && typeof selectedLocation.longitude === 'number') {
+          navigate('/weather', {
+            state: {
+              lat: selectedLocation.latitude,
+              lon: selectedLocation.longitude,
+              name: selectedLocation.name,
+            },
+          });
+        } else {
+          //console.log(`Coordinates not found for "${searchTerm}". Cannot navigate with lat/lon.`);
+          toast.error(`Could not find "${searchTerm}".`);
+        }
       }
+    } catch (error) {
+      //console.log("Error during search:", error);
+      toast.error("Something went wrong with the search.");
     }
   };
 
@@ -61,42 +73,49 @@ export function LocationSearch() {
   };
 
   const handleChange = (e) => {
-    const value = e.target.value;
-    setSearchTerm(value);
+    try {
+      const value = e.target.value;
+      setSearchTerm(value);
 
-    if (value.length > 0 && locationData.length > 0) {
-      const filtered = locationData
-        .filter((location) =>
-          //location.name.toLowerCase().includes(value.toLowerCase()) // Match anywhere in the name
-          location.name.toLowerCase().startsWith(value.toLowerCase())  
-        )
-        .slice(0, 5); // Limit to 5 suggestions
+      if (value.length > 0 && locationData.length > 0) {
+        const filtered = locationData
+          .filter((location) =>
+            location.name.toLowerCase().startsWith(value.toLowerCase())
+          )
+          .slice(0, 5); // Limit to 5 suggestions
 
-      setSuggestions(filtered.map(location => ({
-        ...location,
-        displayName: location.name,
-      })));
-    } else {
-      setSuggestions([]);
+        setSuggestions(filtered.map(location => ({
+          ...location,
+          displayName: location.name,
+        })));
+      } else {
+        setSuggestions([]);
+      }
+    } catch (error) {
+      //console.log("Error while filtering suggestions:", error);
+      toast.error("Failed to update suggestions.");
     }
-  }
+  };
 
   const handleSuggestionClick = (suggestion) => {
-    setSearchTerm(suggestion.displayName);
-    setSuggestions([]);
-    navigate('/weather', {
-      state: {
-        lat: suggestion.latitude,
-        lon: suggestion.longitude,
-        name: suggestion.displayName, 
-      },
-    });
-  }
+    try {
+      setSearchTerm(suggestion.displayName);
+      setSuggestions([]);
+      navigate('/weather', {
+        state: {
+          lat: suggestion.latitude,
+          lon: suggestion.longitude,
+          name: suggestion.displayName,
+        },
+      });
+    } catch (error) {
+      //console.log("Error navigating to selected suggestion:", error);
+      toast.error("Failed to navigate to the selected location.");
+    }
+  };
 
   const extractPostcodeArea = (postcode) => {
-    if (!postcode) {
-      return "";
-    }
+    if (!postcode) return "";
     const match = postcode.match(/^([A-Z]+)/);
     return match ? match[1] : "";
   };
@@ -104,7 +123,7 @@ export function LocationSearch() {
   return (
     <div className="search">
       <div className="search-bar">
-        <img src={icon} alt="Search" onClick={handleSearch} />
+        <img src={search} alt="Search" onClick={handleSearch} />
         <input
           type="text"
           name="search"
@@ -116,7 +135,7 @@ export function LocationSearch() {
       </div>
 
       {loading && <div>Loading suggestions...</div>}
-      
+
       {suggestions.length > 0 ? (
         <ul className="search-suggestion">
           {suggestions.map((suggestion, index) => (

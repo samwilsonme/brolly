@@ -1,6 +1,6 @@
-  import { useState, useEffect } from "react";
   import { useLocation } from "react-router-dom";
-  
+  import { toast } from "sonner";
+
   import { useWeather } from "../hooks/useWeather";
   import { WeatherProvider } from "../context/WeatherContext";
   
@@ -21,56 +21,24 @@
     // Extract latitude and longitude from navigation state
     const queryLat = state?.lat;
     const queryLon = state?.lon;
-  
-    const [locationName, setLocationName] = useState("");
-  
-    useEffect(() => {
-      if (queryLat && queryLon) {
-        setLocationName(`${parseFloat(queryLat).toFixed(2)},${parseFloat(queryLon).toFixed(2)}`);
-      } else {
-        setLocationName("");
-        console.warn("No location data received via navigation state. Using default location.");
-      }
-    }, [queryLat, queryLon]);
-  
-    // Fetch weather data based on coordinates
+    const queryName = state?.name;
+
     const { current, forecast, loading, error } = useWeather(queryLat, queryLon);
   
     if (loading) {
       return <Loading section="weather-page" />;
     }
-  
+    
     if (error) {
-      return (
-        <div className="weather-page">
-          <p className="error">Error loading weather data.</p>
-        </div>
-      );
+      throw new Error(error);
     }
   
-    if (!forecast || !forecast.list || forecast.list.length < 5) {
-      return (
-        <div className="weather-page">
-          <p className="error">No weather data available for {locationName}.</p>
-        </div>
-      );
+    if (!current || !forecast || !forecast.list || forecast.list.length < 5) {
+      throw new Error("Weather data incomplete.");
     }
-
-    /*
-    //for future toast 
-    const locationNameFromState = state?.name; // not sure if needed or if can uses something else
-
-    let locationText = current.name;
-    let secondaryText = null;
-
-    if (locationNameFromState && locationNameFromState !== current.name) {
-      locationText = locationNameFromState;
-      secondaryText = `Showing data for ${current.name}`;
-    }
-    */
-  
+    
     return (
-      <WeatherProvider value={{ current, forecast, loading, error, location: locationName }}>
+      <WeatherProvider value={{ current, forecast, loading, error, name: queryName }}>
         <main className="weather-page">
           <header>
             <h1>Brolly: Get Your Local UK Weather Forecast and Umbrella Guidance</h1>

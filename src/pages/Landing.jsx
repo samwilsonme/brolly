@@ -1,3 +1,6 @@
+import { useEffect } from "react";
+import { toast } from "sonner";
+
 import LocationGeo from "../components/LocationGeo";
 import { LocationSearchLink } from "../components/LocationSearch";
 
@@ -5,7 +8,14 @@ import logo from "../assets/logo/brolly-question.svg";
 
 import "./Landing.css";
 
-export function Landing() {
+export function Landing({ errorMessage }) {
+
+  useEffect(() => {
+    if (errorMessage) {
+      toast.error(errorMessage);
+    }
+  }, [errorMessage]);
+
   return (
     <main className="landing-page">
       <h1>Brolly: Get Your Local UK Weather Forecast and Umbrella Guidance</h1>

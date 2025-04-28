@@ -1,30 +1,40 @@
-import React from "react";
+import { Component } from "react";
+import { toast } from "sonner";
+import { Landing } from "../pages/Landing"; // Assuming path to Landing
 
-class ErrorBoundary extends React.Component {
+class ErrorBoundary extends Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false, errorMessage: null };
   }
 
   static getDerivedStateFromError(error) {
+    // Update state to render fallback UI
     return { hasError: true, errorMessage: error.message };
   }
 
   componentDidCatch(error, errorInfo) {
     console.error("ErrorBoundary caught an error:", error, errorInfo);
-    // Optionally log to an external service
+    // You can integrate logging to external service here
     // logErrorToService(error, errorInfo);
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    // Only trigger toast when entering error state
+    if (this.state.hasError && !prevState.hasError) {
+      toast.error(
+        this.state.errorMessage || this.props.fallbackMessage
+      );
+    }
+  }
+
   render() {
-    if (this.state.hasError) {
-      const { errorMessage } = this.state;
+    const { hasError, errorMessage } = this.state;
+    const { fallbackMessage } = this.props;
+
+    if (hasError) {
       return (
-        <div className="ErrorBoundary">
-          <div>😕</div>
-          <p>{this.props.fallbackMessage || "Oops! Looks like we hit a snag."}</p>
-          <p>{errorMessage || "Best grab your brolly just in case!"}</p>
-        </div>
+        <Landing errorMessage={errorMessage || fallbackMessage} />
       );
     }
 

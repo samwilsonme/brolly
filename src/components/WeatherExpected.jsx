@@ -5,7 +5,7 @@ import { Skeleton } from "./Loading";
 
 function WeatherExpected() {
   const { forecast, loading, error } = useWeatherContext(); // Access data from WeatherContext
-
+  /*
   // Show loading skeleton while fetching data
   if (loading) {
     return <Skeleton section="expected" blocks={5} type="row" />;
@@ -13,14 +13,15 @@ function WeatherExpected() {
 
   // Error handling if there's an issue with fetching the weather data
   if (error) {
-    return <div className="expected"><p className="error">Error: {error}</p></div>;
+    throw new Error(error);
   }
 
   // If forecast data is not available
   if (!forecast || !forecast.list || forecast.list.length < 5) {
-    return <div className="expected"><p className="error">No weather data available</p></div>;
+    throw new Error("Weather data incomplete.");
   }
-
+  */
+  
   // Check the forecast for wet weather and return a message
   const nextBrolly = () => {
     let needBrollyMessage = null;
