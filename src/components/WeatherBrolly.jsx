@@ -1,4 +1,4 @@
-import { getBrollyMessage } from "../hooks/useBrolly";
+import { useBrolly } from "../hooks/useBrolly";
 import { useWeatherContext } from "../context/WeatherContext";
 import { toast } from "sonner";
 
@@ -6,6 +6,7 @@ import { Skeleton } from "./Loading";
 
 function WeatherBrolly() {
   const { current, loading, error, name } = useWeatherContext(); // Access data from WeatherContext
+  const brolly = useBrolly(current);
   /*
   // Show loading skeleton while data is being fetched
   if (loading) {
@@ -51,7 +52,7 @@ function WeatherBrolly() {
         <h2>{name ? name : current.name}?</h2>
       </div>
       <h3>{getBrolly()}</h3>
-      <p>{getBrollyMessage(current)}</p>
+      <p>{brolly}</p>
     </section>
   );
 }

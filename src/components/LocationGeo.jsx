@@ -2,13 +2,13 @@ import { useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 
-import useLocation from "../hooks/useLocation";
+import { useLocationGeo } from "../hooks/useLocationGeo";
 
 import './LocationGeo.css';
 
 function LocationGeo() {
   const navigate = useNavigate();
-  const { latitude, longitude, error, loading, getLocation } = useLocation();
+  const { latitude, longitude, error, loading, getLocation } = useLocationGeo();
   
   const handleLocationGeoClick = () => {
     getLocation(); // Trigger the geolocation request on click

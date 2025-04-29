@@ -1,6 +1,6 @@
 import { useState, useCallback } from "react";
 
-function useLocation() {
+export function useLocationGeo() {
   const [latitude, setLatitude] = useState(null);
   const [longitude, setLongitude] = useState(null);
   const [error, setError] = useState(null);
@@ -35,5 +35,3 @@ function useLocation() {
 
   return { latitude, longitude, error, loading, getLocation };
 }
-
-export default useLocation;
