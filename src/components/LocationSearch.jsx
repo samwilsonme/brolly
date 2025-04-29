@@ -1,44 +1,38 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 
-import data from '../data/uk_locations.min.json'; // Import the local JSON file
-
 import search from "../assets/icons/search.svg";
+import { useLocationSearch } from "../hooks/useLocationSearch";
 
-import './LocationSearch.css';
+import "./LocationSearch.css";
 
 export function LocationSearchLink({ type = "text" }) {
   const navigate = useNavigate();
+
   if (type === "text") {
-    return <a className={`search-link-${type}`} onClick={() => navigate("/location")}>Search Location Manually</a>
+    return (
+      <a className={`search-link-${type}`} onClick={() => navigate("/location")}>
+        Search Location Manually
+      </a>
+    );
   } else {
     return (
       <a className={`search-link-${type}`} onClick={() => navigate("/location")}>
         <img src={search} alt="Search" />
       </a>
-    )
+    );
   }
 }
 
 export function LocationSearch() {
   const [searchTerm, setSearchTerm] = useState("");
   const [suggestions, setSuggestions] = useState([]);
-  const [locationData, setLocationData] = useState([]);
-  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    try {
-      setLoading(true);
-      setLocationData(data); // Load local data
-    } catch (error) {
-      //console.log("Failed to load location data:", error);
-      toast.error("Something went wrong loading location data.");
-    } finally {
-      setLoading(false);
-    }
-  }, []);
+  const { locationData, loading } = useLocationSearch((error) =>
+    toast.error("Something went wrong loading location data.")
+  );
 
   const handleSearch = () => {
     try {
@@ -47,8 +41,12 @@ export function LocationSearch() {
           location.name.toLowerCase() === searchTerm.trim().toLowerCase()
         );
 
-        if (selectedLocation && typeof selectedLocation.latitude === 'number' && typeof selectedLocation.longitude === 'number') {
-          navigate('/weather', {
+        if (
+          selectedLocation &&
+          typeof selectedLocation.latitude === "number" &&
+          typeof selectedLocation.longitude === "number"
+        ) {
+          navigate("/weather", {
             state: {
               lat: selectedLocation.latitude,
               lon: selectedLocation.longitude,
@@ -56,12 +54,10 @@ export function LocationSearch() {
             },
           });
         } else {
-          //console.log(`Coordinates not found for "${searchTerm}". Cannot navigate with lat/lon.`);
           toast.error(`Could not find "${searchTerm}".`);
         }
       }
     } catch (error) {
-      //console.log("Error during search:", error);
       toast.error("Something went wrong with the search.");
     }
   };
@@ -82,17 +78,18 @@ export function LocationSearch() {
           .filter((location) =>
             location.name.toLowerCase().startsWith(value.toLowerCase())
           )
-          .slice(0, 5); // Limit to 5 suggestions
+          .slice(0, 5);
 
-        setSuggestions(filtered.map(location => ({
-          ...location,
-          displayName: location.name,
-        })));
+        setSuggestions(
+          filtered.map((location) => ({
+            ...location,
+            displayName: location.name,
+          }))
+        );
       } else {
         setSuggestions([]);
       }
     } catch (error) {
-      //console.log("Error while filtering suggestions:", error);
       toast.error("Failed to update suggestions.");
     }
   };
@@ -101,7 +98,8 @@ export function LocationSearch() {
     try {
       setSearchTerm(suggestion.displayName);
       setSuggestions([]);
-      navigate('/weather', {
+
+      navigate("/weather", {
         state: {
           lat: suggestion.latitude,
           lon: suggestion.longitude,
@@ -109,7 +107,6 @@ export function LocationSearch() {
         },
       });
     } catch (error) {
-      //console.log("Error navigating to selected suggestion:", error);
       toast.error("Failed to navigate to the selected location.");
     }
   };
@@ -146,7 +143,8 @@ export function LocationSearch() {
           ))}
         </ul>
       ) : (
-        searchTerm && !loading && (
+        searchTerm &&
+        !loading && (
           <div className="no-results">No results found for "{searchTerm}"</div>
         )
       )}
