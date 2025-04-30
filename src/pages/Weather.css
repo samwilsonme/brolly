@@ -10,6 +10,7 @@
   padding: var(--space-lg);
   text-align: center;
   text-wrap: balance;
+  gap: var(--space-lg);
 }
 
 .weather-page header {
@@ -29,13 +30,20 @@
   }
 }
 
+.weather-page footer {
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  justify-content: space-between;
+  width: 100%;
+}
+
 .weather-page .content {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   width: 100%;
-  margin-top: var(--space-lg);
 }
 
 .weather-page .brolly {
@@ -127,6 +135,29 @@
     }
   }
 }
+
+
+
+.toggle-button {
+  background-color: var(--background-light);
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--border-radius-md);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: var(--font-size-sm);
+  border: none;
+}
+
+.toggle-button span {
+  color: var(--text-light);
+}
+
+.toggle-button span.active {
+  color: var(--text-dark);
+}
+
 
 
 
