@@ -4,7 +4,7 @@ import WeatherItem from "./WeatherItem";
 import { Skeleton } from "./Loading";
 
 function WeatherCurrent() {
-  const { current, loading, error } = useWeatherContext(); // Access data from WeatherContext
+  const { current, loading, error, unit } = useWeatherContext(); // Access data from WeatherContext
   /*
   // Show loading skeleton while fetching data
   if (loading) {
@@ -29,6 +29,7 @@ function WeatherCurrent() {
         condition={current.weather[0].main}
         temperature={current.main.temp}
         icon={current.weather[0].icon}
+        unit={unit}
       />
     </section>
   );

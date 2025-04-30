@@ -4,7 +4,7 @@ import WeatherItem from "./WeatherItem";
 import { Skeleton } from "./Loading";
 
 function WeatherExpected() {
-  const { forecast, loading, error } = useWeatherContext(); // Access data from WeatherContext
+  const { forecast, loading, error, unit } = useWeatherContext(); // Access data from WeatherContext
   /*
   // Show loading skeleton while fetching data
   if (loading) {
@@ -66,6 +66,7 @@ function WeatherExpected() {
             condition={item.weather[0].main}
             temperature={item.main.temp}
             icon={item.weather[0].icon}
+            unit={unit}
             time={formatTime(item.dt_txt)}
           />
         ))}
