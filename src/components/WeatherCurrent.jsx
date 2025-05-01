@@ -1,10 +1,12 @@
 import { useWeatherContext } from "../context/WeatherContext";
+import { useUnitContext } from "../context/UnitContext";
 
 import WeatherItem from "./WeatherItem";
 import { Skeleton } from "./Loading";
 
 function WeatherCurrent() {
-  const { current, loading, error, unit } = useWeatherContext(); // Access data from WeatherContext
+  const { current, loading, error } = useWeatherContext(); // Access data from WeatherContext
+  const { unit } = useUnitContext(); // Access unit from UnitContext
   /*
   // Show loading skeleton while fetching data
   if (loading) {

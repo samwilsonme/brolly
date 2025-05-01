@@ -1,6 +1,6 @@
 import getWeatherIcon from "../utils/getWeatherIcon";
 
-function WeatherItem({time, condition, temperature, icon, unit}) {
+function WeatherItem({ time, condition, temperature, icon, unit }) {
   const iconsrc = getWeatherIcon(icon);
 
   let displayTemperature = temperature;

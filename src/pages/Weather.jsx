@@ -3,11 +3,13 @@ import { useLocation } from "react-router-dom";
 
 import { useWeather } from "../hooks/useWeather";
 import { WeatherProvider } from "../context/WeatherContext";
+import { UnitProvider } from "../context/UnitContext";
 
 import { LocationSearchLink } from "../components/LocationSearch";
 import WeatherBrolly from "../components/WeatherBrolly";
 import WeatherCurrent from "../components/WeatherCurrent";
 import WeatherExpected from "../components/WeatherExpected";
+import { UnitToggle } from "../components/UnitToggle";
 import { Loading } from "../components/Loading";
 
 import logo from "../assets/logo/brolly.svg";
@@ -25,12 +27,6 @@ export function Weather() {
 
   const { current, forecast, loading, error } = useWeather(queryLat, queryLon);
 
-  // Metric or Imperial
-  const [unit, setUnit] = useState("metric"); 
-  const toggleUnit = () => {
-    setUnit((prevUnit) => (prevUnit === "metric" ? "imperial" : "metric"));
-  };
-
   if (loading) {
     return <Loading section="weather-page" />;
   }
@@ -44,30 +40,30 @@ export function Weather() {
   }
   
   return (
-    <WeatherProvider value={{ current, forecast, loading, error, name: queryName, unit }}>
-      <main className="weather-page">
-        <header>
-          <h1>Brolly: Get Your Local UK Weather Forecast and Umbrella Guidance</h1>
-          <img src={logo} alt="Brolly logo" />
-          <LocationSearchLink type="icon" />
-        </header>
+    <UnitProvider>
+      <WeatherProvider value={{ current, forecast, loading, error, name: queryName }}>
+        <main className="weather-page">
+          <header>
+            <h1>Brolly: Get Your Local UK Weather Forecast and Umbrella Guidance</h1>
+            <img src={logo} alt="Brolly logo" />
+            <LocationSearchLink type="icon" />
+          </header>
 
-        <div className="content">
-          <article className="brolly">
-            <WeatherBrolly />
-          </article>
+          <div className="content">
+            <article className="brolly">
+              <WeatherBrolly />
+            </article>
 
-          <aside className="weather">
-            <WeatherCurrent />
-            <WeatherExpected />
-          </aside>
-        </div>
-        <footer>
-          <button className="toggle-button" onClick={toggleUnit}>
-            <span className={unit === "metric" ? "active" : ""}>°C</span> / <span className={unit === "imperial" ? "active" : ""}>°F</span>
-          </button>
-        </footer>
-      </main>
-    </WeatherProvider>
+            <aside className="weather">
+              <WeatherCurrent />
+              <WeatherExpected />
+            </aside>
+          </div>
+          <footer>
+            <UnitToggle />
+          </footer>
+        </main>
+      </WeatherProvider>
+    </UnitProvider>
   );
 }
