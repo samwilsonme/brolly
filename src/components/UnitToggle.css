@@ -1,0 +1,19 @@
+.toggle-button {
+  background-color: var(--background-light);
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--border-radius-md);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: var(--font-size-sm);
+  border: none;
+}
+
+.toggle-button span {
+  color: var(--text-light);
+}
+
+.toggle-button span.active {
+  color: var(--text-dark);
+}
