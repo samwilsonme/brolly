@@ -50,7 +50,7 @@
   width: 50%;
   padding: var(--space-lg);
   border-radius: var(--border-radius-lg) 0 0 var(--border-radius-lg);
-  background-color: var(--background-light);
+  background-color: var(--background-tertiary);
 
   & section {
     display: flex;
@@ -70,10 +70,11 @@
   padding: var(--space-lg);
   border-radius: var(--border-radius-lg);
   width: 50%;
-  background-color: var(--background-dark);
+  background-color: var(--background-secondary);
+  border: 4px solid var(--system-cyan);
 
   & .current {
-    background-color: var(--background-light);
+    background-color: var(--background-tertiary);
     padding: var(--space-lg);
     border-radius: var(--border-radius-md);
     margin-bottom: var(--space-lg);
@@ -102,7 +103,7 @@
   }
 
   & .expected {
-    background-color: var(--background-light);
+    background-color: var(--background-tertiary);
     padding: var(--space-lg);
     border-radius: var(--border-radius-md);
 
