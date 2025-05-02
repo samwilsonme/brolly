@@ -2,5 +2,6 @@
   display: flex;
   padding: var(--space-sm) var(--space-lg);
   border-radius: var(--border-radius-md);
-  background-color: var(--background-light);
+  background-color: var(--background-tertiary);
+  color: var(--text-primary);
 }

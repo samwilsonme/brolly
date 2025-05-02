@@ -1,13 +1,5 @@
 /* CSS Variables Template */
 :root {
-  /* Colours */
-  --text-base: #333;
-  --text-light: #666;
-  --text-dark: #333;
-  --background-base: #ffffff;
-  --background-light: #f7f7f7;
-  --background-dark: #d9d9d9;
-
   /* Typography */
   --font-family-base: "Outfit", 'Arial Black', sans-serif;
   --font-size-xs: 0.75rem;
@@ -33,20 +25,84 @@
   --border-radius-md: 2rem;
   --border-radius-lg: 3rem;
 
-  /* Transitions */
-  --transition-duration: 0.2s;
-  --transition-timing-function: ease-in-out;
-  --transition: all var(--transition-duration) var(--transition-timing-function);
+  /* Text colors */
+  --text-primary: black;
+  --text-secondary: rgba(60, 60, 67, 0.6);
+  --text-tertiary: rgba(60, 60, 67, 0.3);
+
+  /* Background colors */
+  --background-primary: white;
+  --background-secondary: #f2f2f7;
+  --background-tertiary: white;
+
+  /* System colors */
+  --system-blue: #007aff;
+  --system-brown: #a2845e;
+  --system-cyan: #32ade6;
+  --system-green: #34c759;
+  --system-indigo: #5856d6;
+  --system-mint: #00c7be;
+  --system-orange: #ff9500;
+  --system-pink: #ff2d55;
+  --system-purple: #af52de;
+  --system-red: #ff3b30;
+  --system-teal: #30b0c7;
+  --system-yellow: #ffcc00;
+
+  /* System gray colors */
+  --system-gray: #8e8e93;
+  --system-gray-2: #aeaeb2;
+  --system-gray-3: #c7c7cc;
+  --system-gray-4: #d1d1d6;
+  --system-gray-5: #e5e5ea;
+  --system-gray-6: #f2f2f7;
 }
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Text colors */
+    --text-primary: white;
+    --text-secondary: rgba(235, 235, 245, 0.6);
+    --text-tertiary: rgba(235, 235, 245, 0.3);
+
+    /* Background colors */
+    --background-primary: black;
+    --background-secondary: #1c1c1e;
+    --background-tertiary: #2c2c2e;
+
+    /* System colors */
+    --system-blue: #0984ff;
+    --system-brown: #ac8e68;
+    --system-cyan: #64d2ff;
+    --system-green: #30d158;
+    --system-indigo: #5e5ce6;
+    --system-mint: #66d4cf;
+    --system-orange: #ff9f0a;
+    --system-pink: #ff375f;
+    --system-purple: #bf5af2;
+    --system-red: #ff453a;
+    --system-teal: #40c8e0;
+    --system-yellow: #ffd60a;
+
+    /* System gray colors */
+    --system-gray: #8e8e93;
+    --system-gray-2: #636366;
+    --system-gray-3: #48484a;
+    --system-gray-4: #3a3a3c;
+    --system-gray-5: #2c2c2e;
+    --system-gray-6: #1c1c1e;
+  }
+}
+
 
 /* Setting Styles */
 body {
   font-family: var(--font-family-base);
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-regular);
-  color: var(--text-base);
+  color: var(--text-primary);
   line-height: var(--line-height);
-  background-color: var(--background-base);
+  background-color: var(--background-secondary);
 }
 
 h1 {
@@ -64,19 +120,19 @@ h3 {
 h4 {
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-bold);
-  color: var(--text-light);
+  color: var(--text-primary);
 }
 
 p {
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-regular);
-  color: var(--text-light);
+  color: var(--text-secondary);
 }
 
 a {
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-regular);
-  color: var(--text-dark);
+  color: var(--text-secondary);
   cursor: pointer;
 }
 
