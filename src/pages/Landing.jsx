@@ -5,7 +5,7 @@ import LocationGeo from '../components/LocationGeo';
 import { LocationSearchLink } from '../components/LocationSearch';
 import { ThemeToggle } from '../components/ThemeToggle';
 
-import logo from '../assets/logo/brolly-question.svg';
+import SVGlogo from '../assets/logo/brolly-question.svg?react';
 
 import './Landing.css';
 
@@ -21,7 +21,8 @@ export function Landing({ errorMessage }) {
     <main className="landing-page">
       <h1>Brolly: Get Your Local UK Weather Forecast and Umbrella Guidance</h1>
       <p>Do you need an umbrella today?</p>
-      <img src={logo} alt="Brolly question logo" />
+      <SVGlogo />
+      
 
       <LocationGeo />
       <LocationSearchLink type="text" />

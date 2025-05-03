@@ -13,7 +13,7 @@ import { UnitToggle } from '../components/UnitToggle';
 import { ThemeToggle } from '../components/ThemeToggle';
 import { Loading } from '../components/Loading';
 
-import logo from '../assets/logo/brolly.svg';
+import SVGlogo from '../assets/logo/brolly.svg?react';
 
 import './Weather.css';
 
@@ -46,7 +46,7 @@ export function Weather() {
         <main className="weather-page">
           <header>
             <h1>Brolly: Get Your Local UK Weather Forecast and Umbrella Guidance</h1>
-            <img src={logo} alt="Brolly logo" />
+            <SVGlogo />
             <LocationSearchLink type="icon" />
           </header>
 
