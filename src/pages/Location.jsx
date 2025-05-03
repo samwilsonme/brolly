@@ -6,9 +6,9 @@ import './Location.css';
 export function Location() {
   return (
     <main className="location-page">
-      <h1>Select Location</h1>
       <LocationSearch />
       <div className="fixed-bottom">
+        <p>Please note that search functionality is presently restricted to the United Kingdom. If you are located elsewhere, why not try to ...</p>
         <LocationGeo />
       </div>
     </main>

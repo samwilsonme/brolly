@@ -1,23 +1,76 @@
-.theme-toggle.toggle-button {
+/*.theme-toggle.toggle-button {
   background-color: var(--background-tertiary);
   padding: var(--space-xs) var(--space-sm);
   border-radius: var(--border-radius-md);
   cursor: pointer;
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: var(--space-xs);
   font-size: var(--font-size-sm);
   border: none;
   
-  span {
-  color: var(--text-secondary);
+  & span {
+    color: var(--text-secondary);
   }
 
-  span.active {
-  color: var(--text-primary);
+  & span.active {
+    color: var(--text-primary);
   }
 
-  span.toggle-divider {
+  & span.toggle-divider {
     color: var(--primary);
   }
+}*/
+
+.theme-toggle.toggle-button {
+  background-color: var(--background-tertiary);
+  padding: var(--space-xs);
+  border-radius: var(--border-radius-md);
+  cursor: pointer;
+  display: inline-flex;
+  font-size: var(--font-size-sm);
+  border: none;
+  position: relative;
+  overflow: hidden;
+  gap: 0.5rem;
+  
+  & span {
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2.5rem;
+    width: 2.5rem;
+    position: relative;
+    z-index: 1;
+    transition: color 0.2s ease-in-out;
+
+    & svg {
+      transition: opacity 0.2s ease-in-out;
+    }
+  }
+  & span.active {
+    & svg {
+      opacity: 0;
+      display: block;
+    }
+  }
+}
+
+.theme-toggle.toggle-button::after {
+  content: "";
+  position: absolute;
+  height: 2.5rem;
+  width: 2.5rem;
+  background-color: var(--background-secondary);
+  border-radius: var(--space-lg);;
+  transition: transform 0.2s ease-in-out;
+}
+
+.theme-toggle.toggle-button.dark-active::after {
+  transform: translateX(0);
+}
+
+.theme-toggle.toggle-button.light-active::after {
+  transform: translateX(3rem);
 }
