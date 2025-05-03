@@ -1,7 +1,17 @@
-import getWeatherIcon from "../utils/getWeatherIcon";
+import React, { useEffect, useState } from 'react';
+import getWeatherIcon from '../utils/getWeatherIcon';
+import { useThemeContext } from '../context/ThemeContext';
 
 function WeatherItem({ time, condition, temperature, icon, unit }) {
-  const iconsrc = getWeatherIcon(icon);
+  const { theme } = useThemeContext();  // Use context for theme
+  const [iconSrc, setIconSrc] = useState(null);
+
+  useEffect(() => {
+    if (icon) {
+      const iconPath = getWeatherIcon(icon, theme);
+      setIconSrc(iconPath);
+    }
+  }, [icon, theme]);
 
   let displayTemperature = temperature;
   let displayUnit = "°C";
@@ -11,10 +21,12 @@ function WeatherItem({ time, condition, temperature, icon, unit }) {
     displayUnit = "°F";
   }
 
+  if (!iconSrc) return <div>Loading...</div>;
+
   return (
     <div className="details">
       {time && <h4>{time}</h4>}
-      <img src={iconsrc} alt={condition} />
+      <img src={iconSrc} alt={condition} />
       <p>{Math.round(displayTemperature)}{displayUnit}</p>
     </div>
   );

@@ -27,6 +27,7 @@
 
   & .brolly-logo {
     height: 100%;
+    width: auto;
     
     path {
       fill: var(--primary);
@@ -97,7 +98,7 @@
       gap: var(--space-md);
 
       & img {
-        width: 6rem;
+        height: 6rem;
       }
 
       & p {
