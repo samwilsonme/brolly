@@ -29,9 +29,17 @@
     height: 100%;
     width: auto;
     
-    path {
+    & path {
       fill: var(--primary);
     }
+  }
+
+  & .location-links {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-sm);
   }
 }
 
@@ -65,7 +73,8 @@
     gap: var(--space-lg);
 
     & h3 {
-      font-size: var(--font-size-xl);
+      font-size: var(--font-size-xxl);
+      font-weight: var(--font-weight-bold);
       color: var(--primary);
     }
 

@@ -6,6 +6,7 @@ import { WeatherProvider } from '../context/WeatherContext';
 import { UnitProvider } from '../context/UnitContext';
 
 import { LocationSearchLink } from '../components/LocationSearch';
+import LocationGeo from '../components/LocationGeo';
 import WeatherBrolly from '../components/WeatherBrolly';
 import WeatherCurrent from '../components/WeatherCurrent';
 import WeatherExpected from '../components/WeatherExpected';
@@ -46,8 +47,11 @@ export function Weather() {
         <main className="weather-page">
           <header>
             <h1>Brolly: Get Your Local UK Weather Forecast and Umbrella Guidance</h1>
-            <SVGlogo />
-            <LocationSearchLink type="icon" />
+            <SVGlogo role="img" alt="Brolly: Get Your Local UK Weather Forecast and Umbrella Guidance" />
+            <div className="location-links">
+              <LocationSearchLink type="icon" />
+              <LocationGeo type="icon" />
+            </div>
           </header>
 
           <div className="content">

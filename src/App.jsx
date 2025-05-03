@@ -13,7 +13,7 @@ function App() {
   return (
     <ThemeProvider>
       <div className="app" data-theme="dark">
-        <Toaster />
+        <Toaster toastOptions={{ className: 'my-custom-toast' }} />
         <ErrorBoundary>
           <Routes>
             <Route path="/" element={<Landing />} />

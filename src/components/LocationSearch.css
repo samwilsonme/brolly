@@ -7,10 +7,9 @@
   padding: var(--space-sm);
   border-radius: var(--border-radius-md);
 
-  & img {
-    width: 1.5rem;
+  & .location-search path {
+    stroke: var(--text-secondary);
   }
-
 }
 
 .search-placeholder {
@@ -47,8 +46,8 @@
     width: 100%;
     height: 4rem;
     
-    & img {
-      width: 1.5rem;
+    & .location-search path {
+      stroke: var(--text-secondary);
     }
 
     & input {
@@ -107,15 +106,11 @@
 
 }
 
-
 @media (max-width: 768px) {
 
-  .search-link-icon img {
-    width: 1rem !important;
-  }
-
   & .search {
-    width: 100%;;
+    width: 100%;
+    margin-top: 0;
   }
 
 }

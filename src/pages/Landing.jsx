@@ -21,7 +21,7 @@ export function Landing({ errorMessage }) {
     <main className="landing-page">
       <h1>Brolly: Get Your Local UK Weather Forecast and Umbrella Guidance</h1>
       <p>Do you need an umbrella today?</p>
-      <SVGlogo />
+      <SVGlogo role="img" alt="Brolly: Get Your Local UK Weather Forecast and Umbrella Guidance" />
       
 
       <LocationGeo />

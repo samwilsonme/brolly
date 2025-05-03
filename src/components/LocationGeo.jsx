@@ -2,11 +2,12 @@ import { useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 
+import SVGgeo from "../assets/icons/location-geo.svg?react";
 import { useLocationGeo } from "../hooks/useLocationGeo";
 
 import './LocationGeo.css';
 
-function LocationGeo() {
+function LocationGeo({ type = "text" }) {
   const navigate = useNavigate();
   const { latitude, longitude, error, loading, getLocation } = useLocationGeo();
   
@@ -27,7 +28,16 @@ function LocationGeo() {
     }
   }, [latitude, longitude, error, loading, navigate]);
 
-  return <a className="location-geo" onClick={handleLocationGeoClick}>Use Current Location</a>
+  if (type === "text") {
+    return <a className={`geo-link-${type}`} onClick={handleLocationGeoClick}>Use Current Location</a>
+  } else {
+    return (
+      <a className={`geo-link-${type}`} onClick={handleLocationGeoClick}>
+        <SVGgeo alt="Use Current Location " />
+      </a>
+    );
+  }
+
 }
 
 export default LocationGeo;

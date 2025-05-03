@@ -1,23 +1,98 @@
-.unit-toggle.toggle-button {
+/*.unit-toggle.toggle-button {
   background-color: var(--background-tertiary);
   padding: var(--space-xs) var(--space-sm);
   border-radius: var(--border-radius-md);
   cursor: pointer;
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: var(--space-xs);
   font-size: var(--font-size-sm);
   border: none;
   
-  span {
-  color: var(--text-secondary);
+  & span {
+    color: var(--text-secondary);
   }
 
-  span.active {
-  color: var(--text-primary);
+  & span.active {
+    color: var(--text-primary);
   }
 
-  span.toggle-divider {
+  & span.toggle-divider {
     color: var(--primary);
   }
+}*/
+/*
+.unit-toggle.toggle-button {
+  background-color: var(--background-tertiary);
+  padding: var(--space-xs);
+  border-radius: var(--border-radius-md);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-size: var(--font-size-sm);
+  border: none;
+  
+  & span {
+    color: var(--text-secondary);
+    display: block;
+    border-radius: var(--border-radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2.5rem;
+    width: 2.5rem;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  }
+
+  & span.active {
+    color: var(--text-primary);
+    background-color: var(--background-secondary);
+  }
+}*/
+
+.unit-toggle.toggle-button {
+  background-color: var(--background-tertiary);
+  padding: var(--space-xs);
+  border-radius: var(--border-radius-md);
+  cursor: pointer;
+  display: inline-flex;
+  font-size: var(--font-size-sm);
+  border: none;
+  position: relative;
+  overflow: hidden;
+  gap: 0.5rem;
+
+  & span {
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2.5rem;
+    width: 2.5rem;
+    position: relative;
+    z-index: 1;
+    transition: color 0.2s ease-in-out;
+  }
+  & span.active {
+    color: var(--text-primary);
+  }
+}
+
+.unit-toggle.toggle-button::after {
+  content: "";
+  position: absolute;
+  height: 2.5rem;
+  width: 2.5rem;
+  background-color: var(--background-secondary);
+  border-radius: var(--space-lg);;
+  transition: transform 0.2s ease-in-out;
+}
+
+.unit-toggle.toggle-button.metric-active::after {
+  transform: translateX(0);
+}
+
+.unit-toggle.toggle-button.imperial-active::after {
+  transform: translateX(3rem);
 }

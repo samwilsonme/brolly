@@ -7,10 +7,11 @@
   --font-size-md: 1.25rem;
   --font-size-lg: 1.75rem;
   --font-size-xl: 2.5rem;
+  --font-size-xxl: 3.5rem;
   --font-size-base: var(--font-size-md);
-  --font-weight-regular: 400;
-  --font-weight-semi-bold: 600;
-  --font-weight-bold: 800;
+  --font-weight-regular: 300;
+  --font-weight-semi-bold: 450;
+  --font-weight-bold: 600;
   --line-height: 1.5;
 
   /* Spacing */
@@ -57,7 +58,11 @@
   --system-gray-5: #e5e5ea;
   --system-gray-6: #f2f2f7;
 
+  /* Brand colors */
   --primary: var(--system-cyan);
+
+  /* Background image */
+  --background-image: url("./assets/background/asfalt-dark-50.png");
 }
 
 /*@media (prefers-color-scheme: dark) {*/
@@ -93,6 +98,10 @@
     --system-gray-4: #3a3a3c;
     --system-gray-5: #2c2c2e;
     --system-gray-6: #1c1c1e;
+
+    /* Background image */
+    --background-image: url("./assets/background/asfalt-light-50.png");
+    
   }
 /*}*/
 
@@ -105,6 +114,8 @@ body {
   color: var(--text-primary);
   line-height: var(--line-height);
   background-color: var(--background-secondary);
+  background-image: var(--background-image);
+  background-repeat: repeat;
 }
 
 h1 {
@@ -143,6 +154,15 @@ a {
   color: var(--text-primary);
 }
 
+[data-sonner-toast].my-custom-toast {
+  background-color: var(--background-primary) !important;
+  border: none !important;
+  color: var(--text-primary) !important;
+
+  & [data-description] {
+    color: var(--text-secondary) !important;
+  }
+}
 
 @media (max-width: 768px) {
 

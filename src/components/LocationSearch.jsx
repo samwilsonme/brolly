@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 
-import search from "../assets/icons/search.svg";
+import SVGsearch from "../assets/icons/location-search.svg?react";
 import { useLocationSearch } from "../hooks/useLocationSearch";
 
 import "./LocationSearch.css";
@@ -19,7 +19,7 @@ export function LocationSearchLink({ type = "text" }) {
   } else {
     return (
       <a className={`search-link-${type}`} onClick={() => navigate("/location")}>
-        <img src={search} alt="Search" />
+        <SVGsearch alt="Search Location Manually" />
       </a>
     );
   }
@@ -120,7 +120,7 @@ export function LocationSearch() {
   return (
     <div className="search">
       <div className="search-bar">
-        <img src={search} alt="Search" onClick={handleSearch} />
+        <SVGsearch alt="Search" onClick={handleSearch} />
         <input
           type="text"
           name="search"
