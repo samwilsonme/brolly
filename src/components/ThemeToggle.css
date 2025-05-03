@@ -1,4 +1,4 @@
-.unit-toggle.toggle-button {
+.theme-toggle.toggle-button {
   background-color: var(--background-tertiary);
   padding: var(--space-xs) var(--space-sm);
   border-radius: var(--border-radius-md);

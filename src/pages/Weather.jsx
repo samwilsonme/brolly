@@ -1,20 +1,21 @@
-import { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 
-import { useWeather } from "../hooks/useWeather";
-import { WeatherProvider } from "../context/WeatherContext";
-import { UnitProvider } from "../context/UnitContext";
+import { useWeather } from '../hooks/useWeather';
+import { WeatherProvider } from '../context/WeatherContext';
+import { UnitProvider } from '../context/UnitContext';
 
-import { LocationSearchLink } from "../components/LocationSearch";
-import WeatherBrolly from "../components/WeatherBrolly";
-import WeatherCurrent from "../components/WeatherCurrent";
-import WeatherExpected from "../components/WeatherExpected";
-import { UnitToggle } from "../components/UnitToggle";
-import { Loading } from "../components/Loading";
+import { LocationSearchLink } from '../components/LocationSearch';
+import WeatherBrolly from '../components/WeatherBrolly';
+import WeatherCurrent from '../components/WeatherCurrent';
+import WeatherExpected from '../components/WeatherExpected';
+import { UnitToggle } from '../components/UnitToggle';
+import { ThemeToggle } from '../components/ThemeToggle';
+import { Loading } from '../components/Loading';
 
-import logo from "../assets/logo/brolly.svg";
+import logo from '../assets/logo/brolly.svg';
 
-import "./Weather.css";
+import './Weather.css';
 
 export function Weather() {
   const location = useLocation();
@@ -60,6 +61,7 @@ export function Weather() {
             </aside>
           </div>
           <footer>
+            <ThemeToggle />
             <UnitToggle />
           </footer>
         </main>

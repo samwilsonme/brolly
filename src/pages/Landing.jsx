@@ -1,12 +1,13 @@
-import { useEffect } from "react";
-import { toast } from "sonner";
+import { useEffect } from 'react';
+import { toast } from 'sonner';
 
-import LocationGeo from "../components/LocationGeo";
-import { LocationSearchLink } from "../components/LocationSearch";
+import LocationGeo from '../components/LocationGeo';
+import { LocationSearchLink } from '../components/LocationSearch';
+import { ThemeToggle } from '../components/ThemeToggle';
 
-import logo from "../assets/logo/brolly-question.svg";
+import logo from '../assets/logo/brolly-question.svg';
 
-import "./Landing.css";
+import './Landing.css';
 
 export function Landing({ errorMessage }) {
 
@@ -24,6 +25,9 @@ export function Landing({ errorMessage }) {
 
       <LocationGeo />
       <LocationSearchLink type="text" />
+      <footer>
+        <ThemeToggle />
+      </footer>
     </main>
   );
 }

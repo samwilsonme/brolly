@@ -1,5 +1,5 @@
-import LocationSearch from "../components/LocationSearch";
-import LocationGeo from "../components/LocationGeo";
+import LocationSearch from '../components/LocationSearch';
+import LocationGeo from '../components/LocationGeo';
 
 import './Location.css';
 
