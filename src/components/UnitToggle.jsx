@@ -1,13 +1,13 @@
 import { useUnitContext } from "../context/UnitContext";
 import "./UnitToggle.css";
 
-export function UnitToggle() {
+export const UnitToggle = () => {
   const { unit, toggleUnit } = useUnitContext();
 
   return (
-    <button className="toggle-button" onClick={toggleUnit}>
+    <button className="unit-toggle toggle-button" onClick={toggleUnit}>
       <span className={unit === "metric" ? "active" : ""}>°C</span>
-      |
+      <span className="toggle-divider">|</span>
       <span className={unit === "imperial" ? "active" : ""}>°F</span>
     </button>
   );
