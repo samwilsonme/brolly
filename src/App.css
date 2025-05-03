@@ -138,6 +138,11 @@ a {
   cursor: pointer;
 }
 
+::selection {
+  background-color: var(--primary);
+  color: var(--text-primary);
+}
+
 
 @media (max-width: 768px) {
 

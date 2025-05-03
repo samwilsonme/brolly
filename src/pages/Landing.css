@@ -15,9 +15,14 @@
     display: none;
   }
 
-  & img {
+  & .brolly-logo {
     height: 8rem;
+    width: 100%;
     margin-bottom: 3rem;
+    
+    path {
+      fill: var(--primary);
+    }
   }
 
 }

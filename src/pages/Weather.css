@@ -25,8 +25,12 @@
     display: none;
   }
 
-  & img {
+  & .brolly-logo {
     height: 100%;
+    
+    path {
+      fill: var(--primary);
+    }
   }
 }
 
@@ -61,6 +65,7 @@
 
     & h3 {
       font-size: var(--font-size-xl);
+      color: var(--primary);
     }
 
   }
