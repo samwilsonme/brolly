@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: brolly
+    env: node
+    rootDir: server
+    buildCommand: |
+      npm install
+      cd ../client && npm install && npm run build
+    startCommand: node index.js
+    envVars:
+      - key: OPENWEATHER_API_KEY
+        sync: false
+      - key: NODE_ENV
+        value: production
