@@ -1,0 +1,370 @@
+{
+  "200": {
+    "day": "A rumble and a bit of a sprinkle. A classic British 'surprise'.",
+    "night": "A rumble and a bit of a sprinkle in the dark. Hope it doesn't wake the neighbours!"
+  },
+  "201": {
+    "day": "Bit more than a spit and spot now, a proper thunderstorm with rain.",
+    "night": "Bit more than a spit and spot now, a proper thunderstorm with rain at night."
+  },
+  "202": {
+    "day": "Crikey, a heavy thunderstorm! Sounds like the heavens are really having a go.",
+    "night": "Crikey, a heavy thunderstorm at night! Sounds like the monsters are having a party."
+  },
+  "210": {
+    "day": "Just a light rumble and a bit of a show.",
+    "night": "Just a light rumble and a bit of a light show in the night sky."
+  },
+  "211": {
+    "day": "A proper thunderstorm brewing. Best keep an eye on the sky!",
+    "night": "A proper thunderstorm brewing in the dark. Best stay tucked up in bed!"
+  },
+  "212": {
+    "day": "Heavy thunderstorm alert! Sounds a bit dramatic, doesn't it?",
+    "night": "Heavy thunderstorm alert at night! Sounds a bit dramatic for bedtime, doesn't it?"
+  },
+  "221": {
+    "day": "A raggedy old thunderstorm, still packing a punch though.",
+    "night": "A raggedy old thunderstorm rumbling through the night."
+  },
+  "230": {
+    "day": "Thunder with a light drizzle. Bit of a weird one, that.",
+    "night": "Thunder with a light drizzle in the dark. A bit of a spooky mix."
+  },
+  "231": {
+    "day": "Thunder and drizzle. A bit of a dampener, literally.",
+    "night": "Thunder and drizzle at night. A bit of a dampener on any late-night strolls."
+  },
+  "232": {
+    "day": "Thunder with heavy drizzle. That's a proper soaking if you're not careful.",
+    "night": "Thunder with heavy drizzle in the dark. That's a proper soaking if you're out and about."
+  },
+  "300": {
+    "day": [
+      "Just a light intensity drizzle. Barely enough to notice... until you realise you're a bit damp.",
+      "A fine mist of drizzle. The kind that gets right into your bones."
+    ],
+    "night": [
+      "Just a light intensity drizzle in the night. Barely enough to notice... until your pyjamas feel a bit damp.",
+      "A fine mist of drizzle in the dark. The kind that makes everything feel a bit clammy."
+    ]
+  },
+  "301": {
+    "day": [
+      "A standard drizzle. Enough to make the pavements gleam and your hair frizz.",
+      "Just 'drizzle', they say. Don't be fooled, it's determined to make you slightly uncomfortable."
+    ],
+    "night": [
+      "A standard drizzle at night. Enough to make the streets gleam under the streetlights.",
+      "Just 'drizzle' they say, even in the dark. Still determined to make things slightly uncomfortable."
+    ]
+  },
+  "302": {
+    "day": [
+      "Heavy intensity drizzle. That's practically rain in disguise.",
+      "More of a persistent soaking than a drizzle, really."
+    ],
+    "night": [
+      "Heavy intensity drizzle at night. That's practically rain while you're trying to sleep.",
+      "More of a persistent soaking than a drizzle in the darkness, really."
+    ]
+  },
+  "310": {
+    "day": [
+      "Light intensity drizzle rain. A right old mix! Best to be prepared for a bit of dampness.",
+      "A bit of light drizzle with some rain thrown in for good measure. You know how it is."
+    ],
+    "night": [
+      "Light intensity drizzle rain at night. A right old mix! Hope it doesn't keep you awake.",
+      "A bit of light drizzle with some rain in the dark. You know how it is, even at night."
+    ]
+  },
+  "311": {
+    "day": [
+      "Drizzle and rain together. The classic British wet weather combo.",
+      "A steady mix of drizzle and rain. Perfect for staying indoors with a cuppa."
+    ],
+    "night": [
+      "Drizzle and rain together at night. The classic British wet weather combo, even after dark.",
+      "A steady mix of drizzle and rain in the night. Perfect for staying indoors with a hot chocolate."
+    ]
+  },
+  "312": {
+    "day": [
+      "Heavy intensity drizzle rain. That's a proper soaking waiting to happen.",
+      "More like a downpour disguised as drizzle."
+    ],
+    "night": [
+      "Heavy intensity drizzle rain at night. That's a proper soaking waiting to happen while you're dreaming.",
+      "More like a downpour disguised as drizzle in the darkness."
+    ]
+  },
+  "313": {
+    "day": [
+      "Shower rain and drizzle. A bit of everything, then?",
+      "On-again, off-again with the showers and drizzle. You might get lucky, but probably not."
+    ],
+    "night": [
+      "Shower rain and drizzle at night. A bit of everything, even when it's dark?",
+      "On-again, off-again with the showers and drizzle in the night. You might get lucky and stay dry... until the next one."
+    ]
+  },
+  "314": {
+    "day": [
+      "Heavy shower rain and drizzle. Sounds like a right old mess out there!",
+      "That's a proper deluge of showers and drizzle."
+    ],
+    "night": [
+      "Heavy shower rain and drizzle at night. Sounds like a right old mess out there while you're sleeping!",
+      "That's a proper deluge of showers and drizzle in the darkness."
+    ]
+  },
+  "321": {
+    "day": [
+      "Shower drizzle. One of those annoying little bursts of dampness.",
+      "Just a little bit of drizzle. Might clear up quickly... or not."
+    ],
+    "night": [
+      "Shower drizzle at night. One of those annoying little bursts of dampness in the dark.",
+      "Just a little bit of drizzle in the night. Might clear up quickly... or not, it's hard to tell in the dark."
+    ]
+  },
+  "500": {
+    "day": [
+      "Just a bit of light rain. Barely enough to ruffle your feathers.",
+      "A gentle shower of light rain. The kind that makes the roses happy (and you slightly damp)."
+    ],
+    "night": [
+      "Just a bit of light rain at night. Barely enough to hear on the roof.",
+      "A gentle shower of light rain in the dark. The kind that makes the streets glisten under the moonlight."
+    ]
+  },
+  "501": {
+    "day": [
+      "Moderate rain. Enough to make you think twice about that walk.",
+      "A steady bit of rain. Not torrential, but enough to soak you through eventually."
+    ],
+    "night": [
+      "Moderate rain at night. Enough to make you glad you're indoors.",
+      "A steady bit of rain in the darkness. Not torrential, but enough to make everything properly wet by morning."
+    ]
+  },
+  "502": {
+    "day": [
+      "Heavy intensity rain! That's a proper downpour.",
+      "Right, the heavens have well and truly opened."
+    ],
+    "night": [
+      "Heavy intensity rain at night! That's a proper downpour while you're trying to sleep.",
+      "Right, the heavens have well and truly opened in the dead of night."
+    ]
+  },
+  "503": {
+    "day": [
+      "Very heavy rain! Blimey, it's really coming down in stair rods!",
+      "That's more like a waterfall than rain!"
+    ],
+    "night": [
+      "Very heavy rain at night! Blimey, it's really coming down in stair rods outside!",
+      "That's more like a waterfall than rain in the darkness!"
+    ]
+  },
+  "504": {
+    "day": [
+      "Extreme rain! This is biblical stuff.",
+      "Crikey, the weather's gone properly mad! That's an awful lot of rain."
+    ],
+    "night": [
+      "Extreme rain at night! This is biblical stuff happening outside your window.",
+      "Crikey, the weather's gone properly mad in the dark! That's an awful lot of rain."
+    ]
+  },
+  "511": {
+    "day": [
+      "Freezing rain! Treacherous conditions out there. Ice and wet – a delightful combo.",
+      "That's icy rain, folks. Be very careful if you're out and about, it'll be slippy!"
+    ],
+    "night": [
+      "Freezing rain at night! Treacherous conditions if you're out. Ice and wet – a delightful nighttime combo.",
+      "That's icy rain in the dark, folks. Be very careful if you have to venture out, it'll be slippy!"
+    ]
+  },
+  "520": {
+    "day": [
+      "Light intensity shower rain. A brief little burst, hopefully.",
+      "Just a light shower passing through. Might not even get you properly wet."
+    ],
+    "night": [
+      "Light intensity shower rain at night. A brief little burst, hopefully it won't last long.",
+      "Just a light shower passing through in the night. Might not even properly wet the ground by morning."
+    ]
+  },
+  "521": {
+    "day": [
+      "Shower rain. Could be a quick one, could linger.",
+      "A bit of shower rain about. Might get caught in it if you're unlucky."
+    ],
+    "night": [
+      "Shower rain at night. Could be a quick one, could linger until morning.",
+      "A bit of shower rain about in the dark. Might get caught in it if you're unlucky enough to be out."
+    ]
+  },
+  "522": {
+    "day": [
+      "Heavy intensity shower rain. Sounds like a proper soaking if you get caught in that downpour!",
+      "That's a hefty shower!"
+    ],
+    "night": [
+      "Heavy intensity shower rain at night. Sounds like a proper soaking if you get caught in that downpour!",
+      "That's a hefty shower in the middle of the night!"
+    ]
+  },
+  "531": {
+    "day": [
+      "Ragged shower rain. On and off, a bit unpredictable.",
+      "One of those messy, intermittent showers. You might dodge it, you might not."
+    ],
+    "night": [
+      "Ragged shower rain at night. On and off, a bit unpredictable in the darkness.",
+      "One of those messy, intermittent showers in the night. You might wake up to puddles, you might not."
+    ]
+  },
+  "600": {
+    "day": "Light snow falling. Looks a bit picturesque, doesn't it? Wrap up warm!",
+    "night": "Light snow falling at night. Looks a bit magical under the streetlights. Wrap up warm if you're out!"
+  },
+  "601": {
+    "day": "It's snowing! Proper snow now. Time for some winter fun (and maybe a shovel later).",
+    "night": "It's snowing at night! Proper snow now. Time for some quiet winter magic."
+  },
+  "602": {
+    "day": "Heavy snow! Looks like a proper whiteout out there. Take it easy if you're travelling.",
+    "night": "Heavy snow at night! Looks like a proper whiteout outside. Take it easy if you're travelling in the morning."
+  },
+  "611": {
+    "day": "Sleet. That lovely mix of rain and snow that's just generally unpleasant. Take care on the roads.",
+    "night": "Sleet at night. That lovely mix of rain and snow that's just generally unpleasant, even in the dark. Take care on the roads in the morning."
+  },
+  "612": {
+    "day": "Light shower sleet. A brief flurry of the messy stuff.",
+    "night": "Light shower sleet at night. A brief flurry of the messy stuff."
+  },
+  "613": {
+    "day": "Shower sleet. One of those icy bursts. Not the nicest!",
+    "night": "Shower sleet at night. One of those icy bursts. Not the nicest way to end the day!"
+  },
+  "615": {
+    "day": "Light rain and snow. A bit of a wintry mix. Keep warm!",
+    "night": "Light rain and snow at night. A bit of a wintry mix. Keep warm if you're out!"
+  },
+  "616": {
+    "day": "Rain and snow. Proper messy conditions. Take it easy out there.",
+    "night": "Rain and snow at night. Proper messy conditions. Take it easy if you're out and about."
+  },
+  "620": {
+    "day": "Light shower snow. Just a little flurry, might not last.",
+    "night": "Light shower snow at night. Just a little flurry, might not last until morning."
+  },
+  "621": {
+    "day": "Shower snow. A bit more persistent than a flurry.",
+    "night": "Shower snow at night. A bit more persistent than a flurry."
+  },
+  "622": {
+    "day": "Heavy shower snow. Could accumulate quickly!",
+    "night": "Heavy shower snow at night. Could accumulate quickly while you're sleeping!"
+  },
+  "701": {
+    "day": "Mist in the air. Makes everything look a bit eerie. Drive carefully.",
+    "night": "Mist in the air tonight. Makes everything look a bit ghostly under the streetlights. Drive carefully if you're out."
+  },
+  "711": {
+    "day": "Smoky conditions reported. Keep those windows closed!",
+    "night": "Smoky conditions reported tonight. Keep those windows closed while you sleep!"
+  },
+  "721": {
+    "day": "Hazy today. Makes the sunshine look a bit odd.",
+    "night": "Hazy tonight. Makes the moon look a bit odd."
+  },
+  "731": {
+    "day": "Dusty/sandy conditions. Might want to keep the windows shut and perhaps wear a mask if you're sensitive.",
+    "night": "Dusty/sandy conditions tonight. Might want to keep the windows shut overnight."
+  },
+  "741": {
+    "day": "Foggy as pea soup! Can barely see a thing. Take it very slow if you're out and about.",
+    "night": "Foggy as pea soup tonight! Can barely see a thing. Take it very slow if you're out and about."
+  },
+  "751": {
+    "day": "Sand in the air! A bit unusual for the UK. Might want to protect your eyes.",
+    "night": "Sand in the air tonight! A bit unusual for the UK at night."
+  },
+  "761": {
+    "day": "Dusty/sandy conditions. Might want to keep the windows shut and perhaps wear a mask if you're sensitive.",
+    "night": "Dusty/sandy conditions tonight. Might want to keep the windows shut overnight."
+  },
+  "762": {
+    "day": "Volcanic ash reported. Best to stay indoors and follow any local advice.",
+    "night": "Volcanic ash reported tonight. Best to stay indoors and follow any local advice."
+  },
+  "771": {
+    "day": "Squalls reported. Sounds a bit dramatic! Expect sudden increases in wind speed.",
+    "night": "Squalls reported tonight. Sounds a bit dramatic! Expect sudden increases in wind speed."
+  },
+  "781": {
+    "day": "Tornado! Right, that's serious. Seek shelter immediately and follow safety guidelines!",
+    "night": "Tornado! Right, that's serious. Seek shelter immediately and follow safety guidelines!"
+  },
+  "800": {
+    "day": [
+      "Clear sky! Get out there and soak up that rare British sunshine.",
+      "Lovely clear skies. Makes a change, doesn't it?"
+    ],
+    "night": [
+      "Clear sky tonight! Perfect for stargazing.",
+      "Lovely clear skies tonight. Makes a change, doesn't it?"
+    ]
+  },
+  "801": {
+    "day": [
+      "A few clouds dotted about. Nothing to worry about just yet.",
+      "Patches of blue with a smattering of clouds. Could be a decent day after all!"
+    ],
+    "night": [
+      "A few clouds dotted about tonight. Nothing to worry about just yet.",
+      "Patches of clear sky with a smattering of clouds tonight. Could be a decent night after all!"
+    ]
+  },
+  "802": {
+    "day": [
+      "Scattered clouds. Could brighten up, could cloud over more. The suspense!",
+      "More clouds than blue sky, but nothing too ominous... yet."
+    ],
+    "night": [
+      "Scattered clouds tonight. Could stay clear, could cloud over more. The suspense!",
+      "More clouds than clear sky tonight, but nothing too ominous... yet."
+    ]
+  },
+  "803": {
+    "day": [
+      "Broken clouds. Looks a bit grey, doesn't it?",
+      "Broken clouds. Looks like the sky's having a bit of a patchy moment."
+    ],
+    "night": [
+      "Broken clouds tonight. Looks a bit grey, even in the dark, doesn't it?",
+      "Broken clouds tonight. Enough to make it feel a bit moody, but not a total blackout."
+    ]
+  },
+  "804": {
+    "day": [
+      "Overcast clouds. Solid grey sky. Don't expect much sunshine today.",
+      "Overcast clouds. Looks like the sky's put its grumpy face on this morning."
+    ],
+    "night": [
+      "Overcast clouds tonight. Solid grey sky. Don't expect much moonlight.",
+      "Overcast clouds tonight. A solid blanket of grey up there. The moon's gone into hiding."
+    ]
+  },
+  "default": {
+    "day": "The weather is doing its thing... whatever that is. Best to have a look outside!",
+    "night": "The weather is doing its thing tonight... whatever that is. Best to have a peek out the window before bed!"
+  }
+}

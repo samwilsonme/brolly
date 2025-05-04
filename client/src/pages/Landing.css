@@ -1,0 +1,48 @@
+.landing-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 768px;
+  max-width: 1000px;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: var(--space-lg);
+  gap: var(--space-lg);
+  text-align: center;
+
+  & h1, p {
+    display: none;
+  }
+
+  & .brolly-logo {
+    height: 8rem;
+    width: 100%;
+    margin-bottom: 3rem;
+    
+    & path {
+      fill: var(--primary);
+    }
+  }
+
+}
+.landing-page footer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: var(--space-lg);
+}
+
+@media (max-width: 768px) {
+
+  .landing-page {
+    min-width: 100%;
+    min-height: 100%;
+  }
+
+}
