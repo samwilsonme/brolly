@@ -7,17 +7,15 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-# Dependency folders
-client/node_modules/
-server/node_modules/
+# Dependency folder
+node_modules/
 
 # Build outputs
 client/dist/
-client/dist-ssr/
+dist/
 
 # Local environment variables
-client/.env
-server/.env
+.env
 
 # Miscellaneous
 *.local
