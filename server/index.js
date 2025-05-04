@@ -47,8 +47,10 @@ app.get('/weather', async (req, res) => {
 
 // Serve static files in production
 if (process.env.NODE_ENV === 'production') {
+  // Serve static files from the React app's build directory
   app.use(express.static(path.join(__dirname, '../client/dist')));
 
+  // Handle all non-API routes with React's routing
   app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '../client/dist/index.html'));
   });
