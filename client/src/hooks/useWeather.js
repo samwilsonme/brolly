@@ -1,8 +1,5 @@
 import { useState, useEffect } from "react";
 
-const apiKey = import.meta.env.VITE_WEATHER_API_KEY;
-const apiBase = "https://api.openweathermap.org/data/2.5";
-
 export function useWeather(lat, lon) {
   const [current, setCurrent] = useState(null);
   const [forecast, setForecast] = useState(null);
@@ -23,7 +20,7 @@ export function useWeather(lat, lon) {
           throw new Error("Invalid latitude or longitude provided.");
         }
 
-        const res = await fetch(`/weather?lat=${lat}&lon=${lon}`);
+        const res = await fetch(`/api/weather?lat=${lat}&lon=${lon}`);
         if (!res.ok) {
           const data = await res.json();
           throw new Error(data?.error || "Failed to fetch weather.");

@@ -1,4 +1,3 @@
-// server/index.js
 import express from 'express';
 import axios from 'axios';
 import cors from 'cors';
@@ -12,7 +11,8 @@ const API_KEY = process.env.OPENWEATHER_API_KEY;
 
 app.use(cors());
 
-app.get('/weather', async (req, res) => {
+// Weather API endpoint
+app.get('/api/weather', async (req, res) => {
   const { lat, lon } = req.query;
 
   if (!lat || !lon) {
@@ -36,6 +36,7 @@ app.get('/weather', async (req, res) => {
   }
 });
 
+// Start server
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
