@@ -6,10 +6,10 @@
       "use": "@vercel/node"
     },
     {
-      "src": "client/",
+      "src": "client/index.html",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "dist"
+        "distDir": "client/dist"
       }
     }
   ],
