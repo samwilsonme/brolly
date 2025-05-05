@@ -19,44 +19,66 @@ In the UK, the word *"brolly"* is a common slang term for an umbrella.
 
 ## Getting Started
 
-Want to have a go at running Brolly yourself? Here's a guide to get you started.
+Want to have a go at running Brolly locally for development or contribution? Here's how to get set up.
 
 ### Prerequisites
 
-- **Node.js**: To run the development server and build the application. Available at [nodejs.org](https://nodejs.org/).
-- **npm**: Package manager for installing the necessary bits and pieces (npm is bundled with Node.js).
-- **OpenWeatherMap API Key**: Brolly needs this to fetch weather and location data. It's free for personal use. You can obtain your key from [here](https://openweathermap.org/).
+- **Node.js**: Required for running the development environment and managing packages. Download from [nodejs.org](https://nodejs.org/).
+- **npm**: Node Package Manager, included with Node.js installation. Used for installing project dependencies.
+- **Vercel CLI**: Needed to run the serverless functions locally. Install globally via npm: `npm install -g vercel`. You may need to log in using `vercel login`.
+- **OpenWeatherMap API Key**: Brolly fetches weather data via a serverless function that uses the OpenWeatherMap API. Get a free key from [openweathermap.org/appid](https://openweathermap.org/appid).
 
-### React + Vite
+### Project Setup
 
-This repo was orginally created from a template to get [React](https://react.dev/) working in [Vite](https://vite.dev/).
+This project uses [React](https://react.dev/) with [Vite](https://vite.dev/) for the frontend and [Vercel Serverless Functions](https://vercel.com/docs/functions) for secure backend API calls.
 
-### Installation
+### Installation & Configuration
 
-1. **Install Dependencies:**
-
+1.  **Clone the Repository:**
+    ```bash
+    git clone https://github.com/YOUR_USERNAME/brolly.git
+    cd brolly
     ```
+
+2.  **Install Dependencies:**
+    Install the necessary Node.js packages for both the frontend and potentially the serverless functions (though this setup primarily uses Node built-ins).
+    ```bash
     npm install
     ```
 
-2. **Configure Your Environment:**
+3.  **Configure Environment Variable:**
+    The serverless function (`api/getWeather.js`) needs your OpenWeatherMap API key.
+    - Create a file named `.env` in the root directory of the project.
+    - Add your API key to this file. **Note:** The variable name should *not* be prefixed with `VITE_` as it's now used server-side.
 
-    - Create a file named `.env` in the root of your project.
-    - Add your OpenWeatherMap API key to the `.env` file, like so:
+      ```dotenv
+      # .env
+      OPENWEATHERMAP_API_KEY=YOUR_SECRET_API_KEY_HERE
+      ```
+    - **Security:** The `.env` file is listed in `.gitignore` to prevent accidentally committing your secret API key. Keep it safe!
 
+### Running Locally
+
+To run the application locally, you need **two** terminals open: one for the Vercel development server (which runs the serverless function) and one for the Vite development server (which serves the React frontend).
+
+1.  **Terminal 1: Start Vercel Development Server:**
+    This command runs your serverless function in the `api` directory locally and proxies requests.
+    ```bash
+    vercel dev
     ```
-    VITE_WEATHER_API_KEY=YOUR_API_KEY_HERE
-    ```
+    Keep this terminal running. Note the port it starts on (usually `http://localhost:3000`). The Vite proxy is configured to point to this.
 
-    **Important:** We've included `.env` in `.gitignore` to safeguard your API key. Please refrain from committing this file with your key!
-
-3. **Launch the App:**
-
-    ```
+2.  **Terminal 2: Start Vite Development Server:**
+    This command starts the React application frontend.
+    ```bash
     npm run dev
     ```
+    Vite will typically start the frontend on `http://localhost:5173` (or the next available port).
 
-    This will fire up the development server. You can view the app in your browser, typically at `http://localhost:5173`.
+3.  **Access the App:**
+    Open your web browser and navigate to the address provided by Vite (e.g., `http://localhost:5173`). The React app will make requests to `/api/getWeather`, which Vite will automatically proxy to your `vercel dev` server running on port 3000.
+
+Now you have the Brolly application running locally, using the secure serverless function approach!
 
 ## How to Use Brolly
 
