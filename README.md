@@ -41,21 +41,17 @@ This project uses [React](https://react.dev/) with [Vite](https://vite.dev/) for
     ```
 
 2.  **Install Dependencies:**
-    Install the necessary Node.js packages for both the frontend and potentially the serverless functions (though this setup primarily uses Node built-ins).
+    Install the necessary Node.js packages for both the frontend and the serverless functions
     ```bash
     npm install
     ```
 
 3.  **Configure Environment Variable:**
-    The serverless function (`api/getWeather.js`) needs your OpenWeatherMap API key.
-    - Create a file named `.env` in the root directory of the project.
-    - Add your API key to this file. **Note:** The variable name should *not* be prefixed with `VITE_` as it's now used server-side.
-
-      ```dotenv
-      # .env
-      OPENWEATHERMAP_API_KEY=YOUR_SECRET_API_KEY_HERE
-      ```
-    - **Security:** The `.env` file is listed in `.gitignore` to prevent accidentally committing your secret API key. Keep it safe!
+    The serverless function (`api/getWeather.js`) needs your OpenWeatherMap API key. Create a file named `.env` in the root directory of the project and add your API key to this file.
+    ```dotenv
+    OPENWEATHERMAP_API_KEY=YOUR_SECRET_API_KEY_HERE
+    ```
+    **Security:** The `.env` file is listed in `.gitignore` to prevent accidentally committing your secret API key. Keep it safe!
 
 ### Running Locally
 
