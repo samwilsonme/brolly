@@ -10,6 +10,10 @@
   padding: var(--space-lg);
   gap: var(--space-lg);
   text-align: center;
+}
+
+.landing-page header {
+  margin-bottom: 3rem;
 
   & h1, p {
     display: none;
@@ -18,15 +22,23 @@
   & .brolly-logo {
     height: 8rem;
     width: 100%;
-    margin-bottom: 3rem;
     
     & path {
       fill: var(--primary);
     }
   }
-
 }
-.landing-page footer {
+
+.landing-page main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-lg);
+  width: 100%;
+}
+
+.landing-page footer.fixed-bottom {
   display: flex;
   flex-direction: row;
   align-items: center;

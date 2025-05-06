@@ -18,17 +18,19 @@ export function Landing({ errorMessage }) {
   }, [errorMessage]);
 
   return (
-    <main className="landing-page">
-      <h1>Brolly: Get Your Local UK Weather Forecast and Umbrella Guidance</h1>
-      <p>Do you need an umbrella today?</p>
-      <SVGlogo role="img" alt="Brolly: Get Your Local UK Weather Forecast and Umbrella Guidance" />
-      
-
-      <LocationGeo />
-      <LocationSearchLink type="text" />
-      <footer>
+    <div className="landing-page">
+      <header>
+        <h1>Brolly: Get Your Local UK Weather Forecast and Umbrella Guidance</h1>
+        <p>Do you need an umbrella today?</p>
+        <SVGlogo role="img" alt="Brolly: Get Your Local UK Weather Forecast and Umbrella Guidance" />
+      </header>
+      <main>
+        <LocationGeo />
+        <LocationSearchLink type="text" />
+      </main>
+      <footer className="fixed-bottom">
         <ThemeToggle />
       </footer>
-    </main>
+    </div>
   );
 }

@@ -155,7 +155,7 @@ a {
 }
 
 [data-sonner-toast].my-custom-toast {
-  background-color: var(--background-primary) !important;
+  background-color: var(--background-tertiary) !important;
   border: none !important;
   color: var(--text-primary) !important;
 

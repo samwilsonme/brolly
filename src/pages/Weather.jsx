@@ -44,7 +44,7 @@ export function Weather() {
   return (
     <UnitProvider>
       <WeatherProvider value={{ current, forecast, loading, error, name: queryName }}>
-        <main className="weather-page">
+        <div className="weather-page">
           <header>
             <h1>Brolly: Get Your Local UK Weather Forecast and Umbrella Guidance</h1>
             <SVGlogo role="img" alt="Brolly: Get Your Local UK Weather Forecast and Umbrella Guidance" />
@@ -54,7 +54,7 @@ export function Weather() {
             </div>
           </header>
 
-          <div className="content">
+          <main>
             <article className="brolly">
               <WeatherBrolly />
             </article>
@@ -63,12 +63,13 @@ export function Weather() {
               <WeatherCurrent />
               <WeatherExpected />
             </aside>
-          </div>
+          </main>
+
           <footer>
             <ThemeToggle />
             <UnitToggle />
           </footer>
-        </main>
+        </div>
       </WeatherProvider>
     </UnitProvider>
   );

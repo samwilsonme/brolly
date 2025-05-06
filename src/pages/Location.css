@@ -1,4 +1,4 @@
-.location-page {
+.location-page main {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -11,7 +11,7 @@
   text-align: center;
 }
 
-.fixed-bottom {
+footer.fixed-bottom {
   position: fixed;
   bottom: 0;
   left: 0;
@@ -26,23 +26,19 @@
     width: 50%;
     font-size: var(--font-size-sm);
     margin-bottom: var(--space-sm);
+    text-align: center;
   }
 }
 
 @media (max-width: 768px) {
 
-  .location-page {
+  .location-page main {
     min-width: 100%;
+  }
 
-    & header {
-      margin-top: 0;
-      height: 6rem;
-    }
-
-    & .fixed-bottom p {
-      font-size: var(--font-size-xs);
-      width: 100%;
-    }
+  footer.fixed-bottom p {
+    font-size: var(--font-size-xs);
+    width: 100%;
   }
 
 }
