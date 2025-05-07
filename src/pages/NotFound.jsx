@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import { useNavigate } from "react-router-dom";
 
 import { LocationSearchLink } from '../components/LocationSearch';
@@ -11,6 +12,42 @@ import './NotFound.css';
 
 export function NotFound() {
   const navigate = useNavigate();
+  const rainFrontRef = useRef(null);
+  const rainBackRef = useRef(null);
+
+  // https://codepen.io/arickle/pen/XKjMZY
+  useEffect(() => {
+    const makeItRain = () => {
+      //clear out everything
+      if (rainFrontRef.current) {
+        rainFrontRef.current.innerHTML = '';
+      }
+      if (rainBackRef.current) {
+        rainBackRef.current.innerHTML = '';
+      }
+
+      let increment = 0;
+      let drops = "";
+      let backDrops = "";
+
+      while (increment < 100) {
+        const randoHundo = (Math.floor(Math.random() * (98 - 1 + 1) + 1));
+        const randoFiver = (Math.floor(Math.random() * (5 - 2 + 1) + 2));
+        increment += randoFiver;
+        drops += `<div class="drop" style="left: ${increment}%; bottom: ${(randoFiver + randoFiver - 1 + 100)}%; animation-delay: 0.${randoHundo}s; animation-duration: 0.5${randoHundo}s;"><div class="stem" style="animation-delay: 0.${randoHundo}s; animation-duration: 0.5${randoHundo}s;"></div><div class="splat" style="animation-delay: 0.${randoHundo}s; animation-duration: 0.5${randoHundo}s;"></div></div>`;
+        backDrops += `<div class="drop" style="right: ${increment}%; bottom: ${(randoFiver + randoFiver - 1 + 100)}%; animation-delay: 0.${randoHundo}s; animation-duration: 0.5${randoHundo}s;"><div class="stem" style="animation-delay: 0.${randoHundo}s; animation-duration: 0.5${randoHundo}s;"></div><div class="splat" style="animation-delay: 0.${randoHundo}s; animation-duration: 0.5${randoHundo}s;"></div></div>`;
+      }
+
+      if (rainFrontRef.current) {
+        rainFrontRef.current.innerHTML = drops;
+      }
+      if (rainBackRef.current) {
+        rainBackRef.current.innerHTML = backDrops;
+      }
+    };
+
+    makeItRain();
+  }, []); // Empty dependency array ensures this runs only once after the initial render
 
   return (
     <div className="notfound-page">
@@ -36,7 +73,8 @@ export function NotFound() {
       <footer>
         <ThemeToggle />
       </footer>
+      <div className="rain front-row" ref={rainFrontRef}></div>
+      <div className="rain back-row" ref={rainBackRef}></div>
     </div>
   );
 }
-
