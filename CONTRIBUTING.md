@@ -7,7 +7,7 @@ Welcome to Brolly - your witty companion for navigating the UK’s unpredictable
 If you’re curious about the project or have ideas to share, feel free to:
 
 * **Explore the Code:** Check out the repository to understand how Brolly works.
-* **Run It Locally:** Follow the [Getting Started](https://github.com/samwilsonme/brolly/blob/main/README.md) section in our README to set up the project on your machine.
+* **Run It Locally:** Follow the [Getting Started](https://github.com/samwilsonme/brolly?tab=readme-ov-file#readme) section in our README to set up the project on your machine.
 
 ## How to Contribute
 
