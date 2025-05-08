@@ -26,7 +26,7 @@ Want to have a go at running Brolly locally for development or contribution? Her
 - **Node.js**: Required for running the development environment and managing packages. Download from [nodejs.org](https://nodejs.org/).
 - **npm**: Node Package Manager, included with Node.js installation. Used for installing project dependencies.
 - **Vercel CLI**: Needed to run the serverless functions locally. Install globally via npm: `npm install -g vercel`. You may need to log in using `vercel login`.
-- **OpenWeatherMap API Key**: Brolly fetches weather data via a serverless function that uses the OpenWeatherMap API. Get a free key from [openweathermap.org/appid](https://openweathermap.org/appid).
+- **OpenWeatherMap API Key**: Brolly fetches weather data via a serverless function that uses the OpenWeatherMap API. Get a free key from [openweathermap.org/](https://openweathermap.org/).
 
 ### Project Setup
 
