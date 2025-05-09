@@ -12,6 +12,7 @@ import WeatherCurrent from '../components/WeatherCurrent';
 import WeatherExpected from '../components/WeatherExpected';
 import { UnitToggle } from '../components/UnitToggle';
 import { ThemeToggle } from '../components/ThemeToggle';
+import { ThemeDrawer } from '../components/ThemeDrawer';
 import { Loading } from '../components/Loading';
 
 import SVGlogo from '../assets/logo/brolly.svg?react';
@@ -66,7 +67,10 @@ export function Weather() {
           </main>
 
           <footer>
-            <ThemeToggle />
+            <div className="theme-settings">
+              <ThemeToggle />
+              <ThemeDrawer />
+            </div>
             <UnitToggle />
           </footer>
         </div>
@@ -74,3 +78,4 @@ export function Weather() {
     </UnitProvider>
   );
 }
+

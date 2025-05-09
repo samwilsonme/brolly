@@ -47,8 +47,18 @@ export const ThemeProvider = ({ children }) => {
     };
   }, []);
 
+  // Color theme
+  const [color, setColor] = useState(() => {
+    return localStorage.getItem('color') || 'cyan';
+  });
+
+  useEffect(() => {
+    document.documentElement.style.setProperty('--primary', `var(--system-${color})`);
+    localStorage.setItem('color', color);
+  }, [color]);
+
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+    <ThemeContext.Provider value={{ theme, toggleTheme, color, setColor }}>
       {children}
     </ThemeContext.Provider>
   );

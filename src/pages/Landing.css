@@ -14,6 +14,7 @@
 
 .landing-page header {
   margin-bottom: 3rem;
+  width: 100%;
 
   & h1, p {
     display: none;
@@ -38,16 +39,23 @@
   width: 100%;
 }
 
-.landing-page footer.fixed-bottom {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
+.landing-page footer {
   position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
   padding: var(--space-lg);
+
+  & .theme-settings {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-sm);
+    min-width: 768px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
 }
 
 @media (max-width: 768px) {
@@ -56,5 +64,7 @@
     min-width: 100%;
     min-height: 100%;
   }
-
+  .landing-page footer .theme-settings {
+    min-width: 100% !important;
+  }
 }

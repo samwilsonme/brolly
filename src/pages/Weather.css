@@ -151,6 +151,17 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
+
+  & .theme-settings {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-sm);
+    background-color: var(--background-primary);
+    padding-right: var(--space-sm);
+    border-radius: var(--border-radius-md);
+  }
 }
 
 @media (max-width: 768px) {
