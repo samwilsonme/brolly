@@ -1,0 +1,131 @@
+.vaul-drawer-content {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--background-secondary);
+  border-top-left-radius: var(--space-lg);
+  border-top-right-radius: var(--space-lg);
+  padding: var(--space-lg);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+
+  &[data-state='open'] {
+    transform: translateY(0);
+  }
+
+  &[data-state='closed'] {
+    transform: translateY(100%);
+  }
+}
+
+.vaul-drawer-close {
+  position: absolute;
+  top: var(--space-md);
+  right: var(--space-md);
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+
+  & .close path {
+    stroke: var(--text-secondary);
+  }
+}
+
+.vaul-drawer-handle {
+  width: 4rem;
+  height: 0.8rem;
+  background-color: var(--text-secondary);
+  border-radius: 0.4rem;
+}
+
+.vaul-drawer-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--fill-primary);
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+
+  &[data-state='open'] {
+    opacity: 1;
+  }
+}
+
+.vaul-drawer-trigger {
+  background: none;
+  border: none;
+  cursor: pointer;
+
+  & .color-picker {
+    height: 100%;
+
+    & .theme-color {
+      fill: var(--primary);
+    }
+  }
+}
+
+.theme-colors {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  background: none;
+  border: none;
+  margin-bottom: var(--space-lg);
+
+  & .theme-color {
+    width: var(--space-lg);
+    height: var(--space-lg);
+    border-radius: var(--border-radius-lg);
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.3s ease-in-out;
+
+    &:hover, &.active {
+      opacity: 1;
+    }
+  }
+}
+
+.theme-color-cyan {
+  background-color: var(--system-cyan);
+}
+.theme-color-blue {
+  background-color: var(--system-blue);
+}
+.theme-color-green {
+  background-color: var(--system-green);
+}
+.theme-color-indigo {
+  background-color: var(--system-indigo);
+}
+.theme-color-mint {
+  background-color: var(--system-mint);
+}
+.theme-color-orange {
+  background-color: var(--system-orange);
+}
+.theme-color-pink{
+  background-color: var(--system-pink);
+}
+.theme-color-purple {
+  background-color: var(--system-purple);
+}
+.theme-color-red {
+  background-color: var(--system-red);
+}
+.theme-color-teal {
+  background-color: var(--system-teal);
+}
+.theme-color-yellow {
+  background-color: var(--system-yellow);
+}

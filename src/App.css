@@ -36,6 +36,11 @@
   --background-secondary: #f2f2f7;
   --background-tertiary: white;
 
+  /* Fill colors */
+  --fill-primary: rgba(120, 120, 128, 0.2);
+  --fill-secondary: rgba(120, 120, 128, 0.16);
+  --fill-tertiary: rgba(118, 118, 128, 0.12);
+
   /* System colors */
   --system-blue: #007aff;
   --system-brown: #a2845e;
@@ -76,6 +81,11 @@
     --background-primary: black;
     --background-secondary: #1c1c1e;
     --background-tertiary: #2c2c2e;
+
+    /* Fill colors */
+    --fill-primary: rgba(120, 120, 128, 0.36);
+    --fill-secondary: rgba(120, 120, 128, 0.32);
+    --fill-tertiary: rgba(118, 118, 128, 0.24);
 
     /* System colors */
     --system-blue: #0984ff;
