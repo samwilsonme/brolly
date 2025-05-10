@@ -45,17 +45,6 @@
   left: 0;
   width: 100%;
   padding: var(--space-lg);
-
-  & .theme-settings {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    gap: var(--space-sm);
-    min-width: 768px;
-    max-width: 1000px;
-    margin: 0 auto;
-  }
 }
 
 @media (max-width: 768px) {
