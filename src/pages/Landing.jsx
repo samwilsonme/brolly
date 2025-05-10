@@ -23,18 +23,16 @@ export function Landing({ errorMessage }) {
       <header>
         <h1>Brolly: Get Your Local UK Weather Forecast and Umbrella Guidance</h1>
         <p>Do you need an umbrella today?</p>
-        <SVGlogo role="img" alt="Brolly: Get Your Local UK Weather Forecast and Umbrella Guidance" />
+        <ThemeDrawer >
+          <SVGlogo role="img" alt="Brolly: Get Your Local UK Weather Forecast and Umbrella Guidance" />
+        </ThemeDrawer>
       </header>
       <main>
         <LocationGeo />
         <LocationSearchLink type="text" />
       </main>
       <footer>
-        <div className="theme-settings">
-          <ThemeDrawer />
-          <ThemeToggle />
-          {/*<ThemeDrawer />*/}
-        </div>
+        <ThemeToggle />
       </footer>
     </div>
   );

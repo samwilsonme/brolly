@@ -2,16 +2,18 @@ import { useThemeContext } from '../context/ThemeContext';
 import { Drawer } from 'vaul';
 
 import SVGclose from "../assets/icons/close.svg?react";
-import SVGpicker from "../assets/icons/color-picker.svg?react";
+//import SVGpicker from "../assets/icons/color-picker.svg?react";
 import './ThemeDrawer.css';
 
-export function ThemeDrawer() {
+export function ThemeDrawer({children}) {
   const { color, setColor } = useThemeContext();
   const colors = ["red", "orange", "yellow", "green", "cyan", "blue", "indigo", "purple"];
 
   return (
     <Drawer.Root>
-      <Drawer.Trigger className="vaul-drawer-trigger"><SVGpicker /></Drawer.Trigger>
+      <Drawer.Trigger className="vaul-drawer-trigger">
+        {children}
+      </Drawer.Trigger>
       <Drawer.Portal>
         <Drawer.Overlay className="vaul-drawer-overlay" />
         <Drawer.Content className="vaul-drawer-content">

@@ -48,7 +48,9 @@ export function Weather() {
         <div className="weather-page">
           <header>
             <h1>Brolly: Get Your Local UK Weather Forecast and Umbrella Guidance</h1>
-            <SVGlogo role="img" alt="Brolly: Get Your Local UK Weather Forecast and Umbrella Guidance" />
+            <ThemeDrawer >
+              <SVGlogo role="img" alt="Brolly: Get Your Local UK Weather Forecast and Umbrella Guidance" />
+            </ThemeDrawer>
             <div className="location-links">
               <LocationSearchLink type="icon" />
               <LocationGeo type="icon" />
@@ -67,10 +69,7 @@ export function Weather() {
           </main>
 
           <footer>
-            <div className="theme-settings">
-              <ThemeToggle />
-              <ThemeDrawer />
-            </div>
+            <ThemeToggle />
             <UnitToggle />
           </footer>
         </div>

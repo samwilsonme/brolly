@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 
 import { LocationSearchLink } from '../components/LocationSearch';
 import LocationGeo from '../components/LocationGeo';
+import { ThemeToggle } from '../components/ThemeToggle';
+import { ThemeDrawer } from '../components/ThemeDrawer';
 
 import SVGlogo from '../assets/logo/brolly.svg?react';
 import dogs from '../assets/images/brolly-dogs.png';
@@ -52,7 +54,9 @@ export function NotFound() {
     <div className="notfound-page">
       <header>
         <h1>Brolly: Get Your Local UK Weather Forecast and Umbrella Guidance</h1>
-        <SVGlogo role="img" alt="Brolly: Get Your Local UK Weather Forecast and Umbrella Guidance" />
+        <ThemeDrawer >
+          <SVGlogo role="img" alt="Brolly: Get Your Local UK Weather Forecast and Umbrella Guidance" />
+        </ThemeDrawer>
         <div className="location-links">
           <LocationSearchLink type="icon" />
           <LocationGeo type="icon" />
@@ -69,6 +73,9 @@ export function NotFound() {
         <p>Lola and Lily are keeping dry - you should too!</p>
       </main>
 
+      <footer>
+        <ThemeToggle />
+      </footer>
       <div className="rain front-row" ref={rainFrontRef}></div>
       <div className="rain back-row" ref={rainBackRef}></div>
     </div>
