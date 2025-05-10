@@ -31,8 +31,9 @@ export function Landing({ errorMessage }) {
       </main>
       <footer>
         <div className="theme-settings">
-          <ThemeToggle />
           <ThemeDrawer />
+          <ThemeToggle />
+          {/*<ThemeDrawer />*/}
         </div>
       </footer>
     </div>
