@@ -15,7 +15,7 @@ export function useWeather(lat, lon) {
         return;
     }
 
-    const fetchWeatherFromBackend = async () => {
+    const fetchWeather = async () => {
       setLoading(true);
       setError(null);
       setCurrent(null); // Clear previous data
@@ -51,14 +51,14 @@ export function useWeather(lat, lon) {
         setForecast(data.forecast);
 
       } catch (err) {
-        console.error("Failed to fetch weather via backend:", err);
+        console.error("Failed to fetch weather data:", err);
         setError(err.message || "An unexpected error occurred.");
       } finally {
         setLoading(false);
       }
     };
 
-    fetchWeatherFromBackend();
+    fetchWeather();
 
     // Re-run the effect if latitude or longitude changes
   }, [lat, lon]);

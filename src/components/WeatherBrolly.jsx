@@ -1,4 +1,6 @@
-import { useBrolly } from "../hooks/useBrolly";
+import { useBrolly } from "../hooks/useBrollyAPI"; // uses MongoDB via API
+//import { useBrolly } from "../hooks/useBrolly"; // uses local JSON
+
 import { useWeatherContext } from "../context/WeatherContext";
 import { toast } from "sonner";
 
@@ -7,6 +9,7 @@ import { Skeleton } from "./Loading";
 function WeatherBrolly() {
   const { current, loading, error, name } = useWeatherContext(); // Access data from WeatherContext
   const brolly = useBrolly(current);
+
   /*
   // Show loading skeleton while data is being fetched
   if (loading) {
@@ -23,16 +26,16 @@ function WeatherBrolly() {
     throw new Error("Weather data incomplete.");
   }
   */
- 
+  
   // Logic to determine if an umbrella is needed based on weather conditions
   const getBrolly = () => {
     const weatherCode = current.weather[0].id;
 
-    if (weatherCode !== 800) {
-      return "Yes"; // Rainy or stormy weather
-    }
     if (weatherCode > 800) {
       return "Maybe"; // Cloudy or atmospheric conditions
+    }
+    if (weatherCode !== 800) {
+      return "Yes"; // Rainy or stormy weather
     }
     return "No"; // Clear weather
   };
@@ -52,7 +55,7 @@ function WeatherBrolly() {
         <h2>{name ? name : current.name}?</h2>
       </div>
       <h3>{getBrolly()}</h3>
-      <p>{brolly}</p>
+      <p>{brolly.message === null ? 'Thinking...' : brolly.message}</p>
     </section>
   );
 }

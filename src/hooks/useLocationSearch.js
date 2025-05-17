@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import data from '../data/uk_locations.min.json';
+import data from '../data/locations.min.json';
 
 export function useLocationSearch(onError) {
   const [locationData, setLocationData] = useState([]);

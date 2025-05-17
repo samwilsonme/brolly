@@ -159,7 +159,11 @@
     min-width: 100%;
 
     & header {
-      height: 3rem
+      height: 100%;
+      
+      & .brolly-logo {
+        height: 4rem;
+      }
     }
 
     & main {
