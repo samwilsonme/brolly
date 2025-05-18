@@ -1,12 +1,14 @@
+[![Brolly](readme-header-dark.png)](brolly-uk.vercel.app)
+
 # Brolly
+
+**Your Witty Companion for Navigating the UK Weather**
 
 [![React](https://img.shields.io/badge/Frontend-React-61DAFB?logo=react)](https://react.dev/)
 [![Vite](https://img.shields.io/badge/Bundler-Vite-646CFF?logo=vite)](https://vitejs.dev/)
 [![Node.js](https://img.shields.io/badge/Backend-Node.js-339933?logo=node.js)](https://nodejs.org/)
 [![MongoDB](https://img.shields.io/badge/Database-MongoDB-47A248?logo=mongodb)](https://www.mongodb.com/)
 [![Vercel](https://img.shields.io/badge/Hosting-Vercel-000000?logo=vercel)](https://vercel.com/)
-
-**Your Witty Companion for Navigating the UK Weather**
 
 Trying to predict the UK weather can feel like guessing the outcome of the Great British Bake Off – expect the unexpected, and always be prepared for a soggy bottom. ***Brolly*** is designed to bring clarity (and a bit of British humour) to that age-old question: *"Will I need an umbrella today?"*
 
@@ -144,3 +146,26 @@ If you're interested in contributing or have another project idea you'd like to 
 
 - [Sam](https://community.codecademy.com/u/52921cf0)
 - [Andrada](https://community.codecademy.com/u/83a8a8f4)
+
+## Resource Credits
+
+A huge thank you to the tools and creators who helped bring Brolly to life:
+
+**API**  
+- [OpenWeatherMap](https://openweathermap.org/) – powering weather forecasts
+
+**Location Data**  
+- [UK Towns API](https://towns.online-tech.co.uk/) – used for location search functionality
+
+**Icons**  
+- [IconWrap – Weather Pack](https://www.figma.com/community/file/1189228878627390589/iconwrap-weather-community-community) by SaeedWorks
+
+**React Components**  
+- [Sonner](https://sonner.emilkowal.ski/) – toast notifications  
+- [Vaul](https://vaul.emilkowal.ski/) – drawer component
+
+**Rain Effect (404 Page)**  
+- [CSS & JavaScript Rain](https://codepen.io/arickle/pen/XKjMZY) by Aaron Rickle
+
+**ChatGPT**  
+- Assisted in composing Brolly’s witty weather messages
